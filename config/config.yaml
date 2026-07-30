@@ -1,0 +1,26 @@
+data:
+  train_path: data/cmapss/train_FD001.txt
+  test_path: data/cmapss/test_FD001.txt
+  rul_path: data/cmapss/RUL_FD001.txt
+  window_size: 30
+  rul_cap: 125
+  sensors_to_drop: [s1, s5, s6, s10, s16, s18, s19]
+  scaler_path: models/scaler.pkl
+
+health_score:
+  healthy_threshold: 80
+  watch_threshold: 50
+  warning_threshold: 20
+
+gemini:
+  api_key: ""
+  model: gemini-1.5-flash
+
+chromadb:
+  persist_dir: data/chromadb
+  collection_name: trace_fleet_events
+
+streamlit:
+  page_title: "TRACE — Fleet Intelligence"
+  page_icon: "🔍"
+  layout: wide
