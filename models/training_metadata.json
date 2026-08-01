@@ -1,0 +1,13 @@
+{
+  "rmse": 53.92803192138672,
+  "mae": 42.54144287109375,
+  "epochs_trained": 27,
+  "best_val_loss": 163.3178603836194,
+  "window_size": 30,
+  "n_features": 17,
+  "hidden_size_1": 64,
+  "hidden_size_2": 32,
+  "dense_units": 16,
+  "model_path": "models/lstm_model.pth",
+  "trained_at": "2026-08-01T18:00:33.217205+00:00"
+}

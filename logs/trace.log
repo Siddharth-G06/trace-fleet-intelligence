@@ -1,0 +1,303 @@
+2026-07-30 13:54:36 | INFO     | src.utils.config_loader | Config loaded from 'C:\Users\SIDDHARTH\Documents\Trace\config\config.yaml'
+2026-07-30 13:54:36 | INFO     | __main__ | === TRACE Data Pipeline START ===
+2026-07-30 13:54:37 | INFO     | __main__ | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-07-30 13:54:37 | INFO     | __main__ | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-07-30 13:54:37 | INFO     | __main__ | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-07-30 13:54:37 | INFO     | __main__ | RUL computed — cap=125  RUL range=[0, 125]
+2026-07-30 13:54:37 | INFO     | __main__ | Dropped sensors ['s1', 's5', 's6', 's10', 's16', 's18', 's19']  remaining columns=20
+2026-07-30 13:54:37 | INFO     | __main__ | Dropped sensors ['s1', 's5', 's6', 's10', 's16', 's18', 's19']  remaining columns=20
+2026-07-30 13:54:37 | INFO     | __main__ | Feature names (17): ['op_setting_1', 'op_setting_2', 'op_setting_3', 's2', 's3', 's4', 's7', 's8', 's9', 's11', 's12', 's13', 's14', 's15', 's17', 's20', 's21']
+2026-07-30 13:54:38 | INFO     | __main__ | Sequences built  X.shape=(17731, 30, 17)  y.shape=(17731,)  window_size=30
+2026-07-30 13:54:38 | INFO     | __main__ | Sequences built  X.shape=(10196, 30, 17)  y.shape=(10196,)  window_size=30
+2026-07-30 13:54:38 | INFO     | __main__ | Scaler saved to 'models/scaler.pkl'
+2026-07-30 13:54:38 | INFO     | __main__ | === TRACE Data Pipeline COMPLETE ===
+2026-07-30 13:57:53 | INFO     | src.utils.config_loader | Config loaded from 'C:\Users\SIDDHARTH\Documents\Trace\config\config.yaml'
+2026-07-30 13:57:53 | INFO     | __main__ | === TRACE Data Pipeline START ===
+2026-07-30 13:57:54 | INFO     | __main__ | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-07-30 13:57:54 | INFO     | __main__ | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-07-30 13:57:54 | INFO     | __main__ | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-07-30 13:57:54 | INFO     | __main__ | RUL computed — cap=125  RUL range=[0, 125]
+2026-07-30 13:57:54 | INFO     | __main__ | Dropped sensors ['s1', 's5', 's6', 's10', 's16', 's18', 's19']  remaining columns=20
+2026-07-30 13:57:54 | INFO     | __main__ | Dropped sensors ['s1', 's5', 's6', 's10', 's16', 's18', 's19']  remaining columns=19
+2026-07-30 13:57:54 | INFO     | __main__ | Feature names (17): ['op_setting_1', 'op_setting_2', 'op_setting_3', 's2', 's3', 's4', 's7', 's8', 's9', 's11', 's12', 's13', 's14', 's15', 's17', 's20', 's21']
+2026-07-30 13:57:55 | INFO     | __main__ | Sequences built  X.shape=(17731, 30, 17)  y.shape=(17731,)  window_size=30
+2026-07-30 13:58:31 | INFO     | src.utils.config_loader | Config loaded from 'C:\Users\SIDDHARTH\Documents\Trace\config\config.yaml'
+2026-07-30 13:58:31 | INFO     | __main__ | === TRACE Data Pipeline START ===
+2026-07-30 13:58:32 | INFO     | __main__ | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-07-30 13:58:32 | INFO     | __main__ | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-07-30 13:58:32 | INFO     | __main__ | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-07-30 13:58:32 | INFO     | __main__ | RUL computed — cap=125  RUL range=[0, 125]
+2026-07-30 13:58:33 | INFO     | __main__ | Dropped sensors ['s1', 's5', 's6', 's10', 's16', 's18', 's19']  remaining columns=20
+2026-07-30 13:58:33 | INFO     | __main__ | Dropped sensors ['s1', 's5', 's6', 's10', 's16', 's18', 's19']  remaining columns=20
+2026-07-30 13:58:33 | INFO     | __main__ | Feature names (17): ['op_setting_1', 'op_setting_2', 'op_setting_3', 's2', 's3', 's4', 's7', 's8', 's9', 's11', 's12', 's13', 's14', 's15', 's17', 's20', 's21']
+2026-07-30 13:58:33 | INFO     | __main__ | Sequences built  X.shape=(17731, 30, 17)  y.shape=(17731,)  window_size=30
+2026-07-30 13:58:33 | INFO     | __main__ | Sequences built  X.shape=(10196, 30, 17)  y.shape=(10196,)  window_size=30
+2026-07-30 13:58:33 | INFO     | __main__ | Scaler saved to 'models/scaler.pkl'
+2026-07-30 13:58:33 | INFO     | __main__ | === TRACE Data Pipeline COMPLETE ===
+2026-07-30 13:58:45 | INFO     | src.utils.config_loader | Config loaded from 'C:\Users\SIDDHARTH\Documents\Trace\config\config.yaml'
+2026-07-30 13:58:46 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-07-30 13:58:46 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-07-30 13:58:46 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-07-30 13:58:46 | INFO     | src.data_layer.loader | RUL computed — cap=125  RUL range=[0, 125]
+2026-07-30 13:58:46 | INFO     | __main__ | Health scores computed  rows=20631  tier_counts={'HEALTHY': 10631, 'WARNING': 3800, 'WATCH': 3700, 'CRITICAL': 2500}
+2026-07-30 13:58:46 | INFO     | __main__ | Fleet snapshot ready  units=100  critical=100  warning=0  watch=0  healthy=0
+2026-07-30 14:00:19 | INFO     | src.utils.config_loader | Config loaded from 'C:\Users\SIDDHARTH\Documents\Trace\config\config.yaml'
+2026-07-30 14:00:20 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-07-30 14:00:21 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-07-30 14:00:21 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-07-30 14:00:21 | INFO     | src.data_layer.loader | RUL computed — cap=125  RUL range=[0, 125]
+2026-07-30 14:00:21 | INFO     | src.data_layer.loader | === TRACE Data Pipeline START ===
+2026-07-30 14:00:21 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-07-30 14:00:22 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-07-30 14:00:22 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-07-30 14:00:22 | INFO     | src.data_layer.loader | RUL computed — cap=125  RUL range=[0, 125]
+2026-07-30 14:00:22 | INFO     | src.data_layer.loader | Dropped sensors ['s1', 's5', 's6', 's10', 's16', 's18', 's19']  remaining columns=20
+2026-07-30 14:00:22 | INFO     | src.data_layer.loader | Dropped sensors ['s1', 's5', 's6', 's10', 's16', 's18', 's19']  remaining columns=20
+2026-07-30 14:00:22 | INFO     | src.data_layer.loader | Feature names (17): ['op_setting_1', 'op_setting_2', 'op_setting_3', 's2', 's3', 's4', 's7', 's8', 's9', 's11', 's12', 's13', 's14', 's15', 's17', 's20', 's21']
+2026-07-30 14:00:22 | INFO     | src.data_layer.loader | Sequences built  X.shape=(17731, 30, 17)  y.shape=(17731,)  window_size=30
+2026-07-30 14:00:22 | INFO     | src.data_layer.loader | Sequences built  X.shape=(10196, 30, 17)  y.shape=(10196,)  window_size=30
+2026-07-30 14:00:22 | INFO     | src.data_layer.loader | Scaler saved to 'models/scaler.pkl'
+2026-07-30 14:00:22 | INFO     | src.data_layer.loader | === TRACE Data Pipeline COMPLETE ===
+2026-07-30 14:00:22 | INFO     | src.data_layer.health_score | Health scores computed  rows=20631  tier_counts={'HEALTHY': 10631, 'WARNING': 3800, 'WATCH': 3700, 'CRITICAL': 2500}
+2026-07-30 14:00:22 | INFO     | src.data_layer.health_score | Fleet snapshot ready  units=100  critical=100  warning=0  watch=0  healthy=0
+2026-07-30 14:01:05 | INFO     | src.utils.config_loader | Config loaded from 'C:\Users\SIDDHARTH\Documents\Trace\config\config.yaml'
+2026-07-30 14:01:05 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-07-30 14:01:06 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-07-30 14:01:06 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-07-30 14:01:06 | INFO     | src.data_layer.loader | RUL computed — cap=125  RUL range=[0, 125]
+2026-07-30 14:01:06 | INFO     | src.data_layer.loader | === TRACE Data Pipeline START ===
+2026-07-30 14:01:07 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-07-30 14:01:07 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-07-30 14:01:07 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-07-30 14:01:07 | INFO     | src.data_layer.loader | RUL computed — cap=125  RUL range=[0, 125]
+2026-07-30 14:01:07 | INFO     | src.data_layer.loader | Dropped sensors ['s1', 's5', 's6', 's10', 's16', 's18', 's19']  remaining columns=20
+2026-07-30 14:01:07 | INFO     | src.data_layer.loader | Dropped sensors ['s1', 's5', 's6', 's10', 's16', 's18', 's19']  remaining columns=20
+2026-07-30 14:01:07 | INFO     | src.data_layer.loader | Feature names (17): ['op_setting_1', 'op_setting_2', 'op_setting_3', 's2', 's3', 's4', 's7', 's8', 's9', 's11', 's12', 's13', 's14', 's15', 's17', 's20', 's21']
+2026-07-30 14:01:07 | INFO     | src.data_layer.loader | Sequences built  X.shape=(17731, 30, 17)  y.shape=(17731,)  window_size=30
+2026-07-30 14:01:07 | INFO     | src.data_layer.loader | Sequences built  X.shape=(10196, 30, 17)  y.shape=(10196,)  window_size=30
+2026-07-30 14:01:08 | INFO     | src.data_layer.loader | Scaler saved to 'models/scaler.pkl'
+2026-07-30 14:01:08 | INFO     | src.data_layer.loader | === TRACE Data Pipeline COMPLETE ===
+2026-07-30 14:01:08 | INFO     | src.data_layer.health_score | Health scores computed  rows=20631  tier_counts={'HEALTHY': 10631, 'WARNING': 3800, 'WATCH': 3700, 'CRITICAL': 2500}
+2026-07-30 14:01:08 | INFO     | src.data_layer.health_score | Fleet snapshot ready  units=100  critical=100  warning=0  watch=0  healthy=0
+2026-07-30 14:03:37 | INFO     | src.utils.config_loader | Config loaded from 'C:\Users\SIDDHARTH\Documents\Trace\config\config.yaml'
+2026-07-30 14:03:39 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-07-30 14:03:40 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-07-30 14:03:40 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-07-30 14:03:40 | INFO     | src.data_layer.loader | RUL computed — cap=125  RUL range=[0, 125]
+2026-07-30 14:03:40 | INFO     | src.data_layer.health_score | Health scores computed  rows=20631  tier_counts={'HEALTHY': 10631, 'WARNING': 3800, 'WATCH': 3700, 'CRITICAL': 2500}
+2026-07-30 14:03:40 | INFO     | src.data_layer.health_score | Fleet snapshot ready  units=100  critical=100  warning=0  watch=0  healthy=0
+2026-07-30 14:08:32 | INFO     | src.utils.config_loader | Config loaded from 'C:\Users\SIDDHARTH\Documents\Trace\config\config.yaml'
+2026-07-30 14:08:33 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-07-30 14:08:33 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-07-30 14:08:33 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-07-30 14:08:33 | INFO     | src.data_layer.loader | RUL computed — cap=125  RUL range=[0, 125]
+2026-07-30 14:08:33 | INFO     | __main__ | Health scores computed  rows=20631  tier_counts={'HEALTHY': 10631, 'WARNING': 3800, 'WATCH': 3700, 'CRITICAL': 2500}
+2026-07-30 14:08:33 | INFO     | __main__ | Fleet snapshot ready  units=100  critical=0  warning=27  watch=32  healthy=41
+2026-07-30 14:09:05 | INFO     | src.utils.config_loader | Config loaded from 'C:\Users\SIDDHARTH\Documents\Trace\config\config.yaml'
+2026-07-30 14:09:05 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-07-30 14:09:05 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-07-30 14:09:05 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-07-30 14:09:05 | INFO     | src.data_layer.loader | RUL computed — cap=125  RUL range=[0, 125]
+2026-07-30 14:09:05 | INFO     | src.data_layer.loader | === TRACE Data Pipeline START ===
+2026-07-30 14:09:06 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-07-30 14:09:06 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-07-30 14:09:06 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-07-30 14:09:06 | INFO     | src.data_layer.loader | RUL computed — cap=125  RUL range=[0, 125]
+2026-07-30 14:09:07 | INFO     | src.data_layer.loader | Dropped sensors ['s1', 's5', 's6', 's10', 's16', 's18', 's19']  remaining columns=20
+2026-07-30 14:09:07 | INFO     | src.data_layer.loader | Dropped sensors ['s1', 's5', 's6', 's10', 's16', 's18', 's19']  remaining columns=20
+2026-07-30 14:09:07 | INFO     | src.data_layer.loader | Feature names (17): ['op_setting_1', 'op_setting_2', 'op_setting_3', 's2', 's3', 's4', 's7', 's8', 's9', 's11', 's12', 's13', 's14', 's15', 's17', 's20', 's21']
+2026-07-30 14:09:07 | INFO     | src.data_layer.loader | Sequences built  X.shape=(17731, 30, 17)  y.shape=(17731,)  window_size=30
+2026-07-30 14:09:07 | INFO     | src.data_layer.loader | Sequences built  X.shape=(10196, 30, 17)  y.shape=(10196,)  window_size=30
+2026-07-30 14:09:07 | INFO     | src.data_layer.loader | Scaler saved to 'models/scaler.pkl'
+2026-07-30 14:09:07 | INFO     | src.data_layer.loader | === TRACE Data Pipeline COMPLETE ===
+2026-07-30 14:09:07 | INFO     | src.data_layer.health_score | Health scores computed  rows=20631  tier_counts={'HEALTHY': 10631, 'WARNING': 3800, 'WATCH': 3700, 'CRITICAL': 2500}
+2026-07-30 14:09:07 | INFO     | src.data_layer.health_score | Fleet snapshot ready  units=100  critical=0  warning=27  watch=32  healthy=41
+2026-07-30 14:14:11 | INFO     | src.utils.config_loader | Config loaded from 'C:\Users\SIDDHARTH\Documents\Trace\config\config.yaml'
+2026-07-30 14:14:14 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-07-30 14:14:14 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-07-30 14:14:14 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-07-30 14:14:14 | INFO     | src.data_layer.loader | RUL computed — cap=125  RUL range=[0, 125]
+2026-07-30 14:14:14 | INFO     | src.data_layer.health_score | Health scores computed  rows=20631  tier_counts={'HEALTHY': 10631, 'WARNING': 3800, 'WATCH': 3700, 'CRITICAL': 2500}
+2026-07-30 14:14:15 | INFO     | src.data_layer.health_score | Fleet snapshot ready  units=100  critical=0  warning=27  watch=32  healthy=41
+2026-07-30 14:17:25 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-07-30 14:17:25 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-07-30 14:17:25 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-07-30 14:17:25 | INFO     | src.data_layer.loader | RUL computed — cap=125  RUL range=[0, 125]
+2026-07-30 14:17:25 | INFO     | src.data_layer.health_score | Health scores computed  rows=20631  tier_counts={'HEALTHY': 10631, 'WARNING': 3800, 'WATCH': 3700, 'CRITICAL': 2500}
+2026-07-30 14:17:25 | INFO     | src.data_layer.health_score | Fleet snapshot ready  units=100  critical=0  warning=27  watch=32  healthy=41
+2026-08-01 23:29:40 | INFO     | src.utils.config_loader | Config loaded from 'C:\Users\SIDDHARTH\Documents\Trace\config\config.yaml'
+2026-08-01 23:29:40 | INFO     | src.data_layer.loader | === TRACE Data Pipeline START ===
+2026-08-01 23:29:40 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-08-01 23:29:40 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-08-01 23:29:40 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-08-01 23:29:40 | INFO     | src.data_layer.loader | RUL computed — cap=125  RUL range=[0, 125]
+2026-08-01 23:29:41 | INFO     | src.data_layer.loader | Dropped sensors ['s1', 's5', 's6', 's10', 's16', 's18', 's19']  remaining columns=20
+2026-08-01 23:29:41 | INFO     | src.data_layer.loader | Dropped sensors ['s1', 's5', 's6', 's10', 's16', 's18', 's19']  remaining columns=20
+2026-08-01 23:29:41 | INFO     | src.data_layer.loader | Feature names (17): ['op_setting_1', 'op_setting_2', 'op_setting_3', 's2', 's3', 's4', 's7', 's8', 's9', 's11', 's12', 's13', 's14', 's15', 's17', 's20', 's21']
+2026-08-01 23:29:41 | INFO     | src.data_layer.loader | Sequences built  X.shape=(17731, 30, 17)  y.shape=(17731,)  window_size=30
+2026-08-01 23:29:41 | INFO     | src.data_layer.loader | Sequences built  X.shape=(10196, 30, 17)  y.shape=(10196,)  window_size=30
+2026-08-01 23:29:41 | INFO     | src.data_layer.loader | Scaler saved to 'models/scaler.pkl'
+2026-08-01 23:29:41 | INFO     | src.data_layer.loader | === TRACE Data Pipeline COMPLETE ===
+2026-08-01 23:29:41 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-08-01 23:29:41 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-08-01 23:29:41 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-08-01 23:29:41 | INFO     | src.data_layer.loader | RUL computed — cap=125  RUL range=[0, 125]
+2026-08-01 23:29:41 | INFO     | src.data_layer.loader | Dropped sensors ['s1', 's5', 's6', 's10', 's16', 's18', 's19']  remaining columns=20
+2026-08-01 23:29:41 | INFO     | src.ml_layer.lstm_predictor | Sequences built  X.shape=(17731, 30, 17)  y.shape=(17731,)  window_size=30  units=100
+2026-08-01 23:29:41 | INFO     | src.data_layer.loader | Dropped sensors ['s1', 's5', 's6', 's10', 's16', 's18', 's19']  remaining columns=20
+2026-08-01 23:29:41 | INFO     | src.ml_layer.lstm_predictor | Sequences built  X.shape=(10196, 30, 17)  y.shape=(10196,)  window_size=30  units=100
+2026-08-01 23:29:44 | INFO     | src.ml_layer.lstm_predictor | Trainer initialised  device=cpu
+2026-08-01 23:29:44 | INFO     | src.ml_layer.lstm_predictor | LSTMPredictor built  n_features=17  h1=64  h2=32  dense_units=16  dropout=0.20
+2026-08-01 23:29:46 | INFO     | src.ml_layer.lstm_predictor | Engine split  train_units=80  val_units=20  train_windows=13818  val_windows=3913
+2026-08-01 23:29:46 | INFO     | src.ml_layer.lstm_predictor | Training START  max_epochs=50  batch_size=32  patience=10
+2026-08-01 23:29:48 | INFO     | src.ml_layer.lstm_predictor | Epoch 001/050  train_loss=4657.4480  val_loss=1928.1120
+2026-08-01 23:29:50 | INFO     | src.ml_layer.lstm_predictor | Epoch 002/050  train_loss=1788.0445  val_loss=1790.8121
+2026-08-01 23:29:51 | INFO     | src.ml_layer.lstm_predictor | Epoch 003/050  train_loss=1782.6565  val_loss=1795.7862
+2026-08-01 23:29:53 | INFO     | src.ml_layer.lstm_predictor | Epoch 004/050  train_loss=1777.2812  val_loss=1794.9853
+2026-08-01 23:29:55 | INFO     | src.ml_layer.lstm_predictor | Epoch 005/050  train_loss=1790.1189  val_loss=1779.6556
+2026-08-01 23:29:57 | INFO     | src.ml_layer.lstm_predictor | Epoch 006/050  train_loss=1783.3831  val_loss=1550.4576
+2026-08-01 23:29:58 | INFO     | src.ml_layer.lstm_predictor | Epoch 007/050  train_loss=488.3592  val_loss=256.3686
+2026-08-01 23:30:00 | INFO     | src.ml_layer.lstm_predictor | Epoch 008/050  train_loss=291.8065  val_loss=195.0116
+2026-08-01 23:30:02 | INFO     | src.ml_layer.lstm_predictor | Epoch 009/050  train_loss=267.0654  val_loss=194.8618
+2026-08-01 23:30:04 | INFO     | src.ml_layer.lstm_predictor | Epoch 010/050  train_loss=257.7325  val_loss=187.5141
+2026-08-01 23:30:05 | INFO     | src.ml_layer.lstm_predictor | Epoch 011/050  train_loss=247.5640  val_loss=184.7543
+2026-08-01 23:30:07 | INFO     | src.ml_layer.lstm_predictor | Epoch 012/050  train_loss=236.4685  val_loss=180.8718
+2026-08-01 23:30:09 | INFO     | src.ml_layer.lstm_predictor | Epoch 013/050  train_loss=234.7337  val_loss=213.2921
+2026-08-01 23:30:10 | INFO     | src.ml_layer.lstm_predictor | Epoch 014/050  train_loss=229.2332  val_loss=168.4682
+2026-08-01 23:30:12 | INFO     | src.ml_layer.lstm_predictor | Epoch 015/050  train_loss=229.5484  val_loss=172.1862
+2026-08-01 23:30:14 | INFO     | src.ml_layer.lstm_predictor | Epoch 016/050  train_loss=226.8169  val_loss=176.9936
+2026-08-01 23:30:16 | INFO     | src.ml_layer.lstm_predictor | Epoch 017/050  train_loss=226.3730  val_loss=163.3179
+2026-08-01 23:30:17 | INFO     | src.ml_layer.lstm_predictor | Epoch 018/050  train_loss=222.1768  val_loss=236.1520
+2026-08-01 23:30:19 | INFO     | src.ml_layer.lstm_predictor | Epoch 019/050  train_loss=215.4968  val_loss=179.5564
+2026-08-01 23:30:21 | INFO     | src.ml_layer.lstm_predictor | Epoch 020/050  train_loss=216.9972  val_loss=167.7648
+2026-08-01 23:30:22 | INFO     | src.ml_layer.lstm_predictor | Epoch 021/050  train_loss=211.6075  val_loss=180.6989
+2026-08-01 23:30:24 | INFO     | src.ml_layer.lstm_predictor | Epoch 022/050  train_loss=209.1408  val_loss=169.8763
+2026-08-01 23:30:26 | INFO     | src.ml_layer.lstm_predictor | Epoch 023/050  train_loss=207.8547  val_loss=187.9929
+2026-08-01 23:30:28 | INFO     | src.ml_layer.lstm_predictor | Epoch 024/050  train_loss=205.1433  val_loss=192.2207
+2026-08-01 23:30:29 | INFO     | src.ml_layer.lstm_predictor | Epoch 025/050  train_loss=204.3087  val_loss=169.1290
+2026-08-01 23:30:31 | INFO     | src.ml_layer.lstm_predictor | Epoch 026/050  train_loss=201.6706  val_loss=211.8069
+2026-08-01 23:30:33 | INFO     | src.ml_layer.lstm_predictor | Epoch 027/050  train_loss=202.5809  val_loss=178.4719
+2026-08-01 23:30:33 | INFO     | src.ml_layer.lstm_predictor | Early stopping at epoch 27  best_val_loss=163.3179
+2026-08-01 23:30:33 | INFO     | src.ml_layer.lstm_predictor | Training COMPLETE  epochs_trained=27  best_val_loss=163.3179
+2026-08-01 23:30:33 | INFO     | src.ml_layer.lstm_predictor | Evaluation  RMSE=53.9280  MAE=42.5414
+2026-08-01 23:30:33 | INFO     | src.ml_layer.lstm_predictor | Model saved to 'models/lstm_model.pth'
+2026-08-01 23:30:33 | INFO     | src.ml_layer.lstm_predictor | Metadata saved to 'models/training_metadata.json'
+2026-08-01 23:31:56 | INFO     | src.ml_layer.lstm_predictor | LSTMPredictor built  n_features=14  h1=64  h2=32  dense_units=16  dropout=0.10
+2026-08-01 23:31:56 | INFO     | src.ml_layer.lstm_predictor | Trainer initialised  device=cpu
+2026-08-01 23:31:56 | INFO     | src.ml_layer.lstm_predictor | LSTMPredictor built  n_features=14  h1=64  h2=32  dense_units=16  dropout=0.10
+2026-08-01 23:31:57 | INFO     | src.ml_layer.lstm_predictor | Model saved to 'C:\Users\SIDDHARTH\AppData\Local\Temp\pytest-of-SIDDHARTH\pytest-11\models0\lstm_model.pth'
+2026-08-01 23:31:57 | INFO     | src.ml_layer.lstm_predictor | Metadata saved to 'C:\Users\SIDDHARTH\AppData\Local\Temp\pytest-of-SIDDHARTH\pytest-11\models0\training_metadata.json'
+2026-08-01 23:31:58 | INFO     | src.ml_layer.lstm_predictor | Trainer initialised  device=cpu
+2026-08-01 23:31:58 | INFO     | src.ml_layer.lstm_predictor | LSTMPredictor built  n_features=14  h1=64  h2=32  dense_units=16  dropout=0.10
+2026-08-01 23:31:58 | INFO     | src.ml_layer.lstm_predictor | Model loaded from 'C:\Users\SIDDHARTH\AppData\Local\Temp\pytest-of-SIDDHARTH\pytest-11\models0\lstm_model.pth'  (eval mode)
+2026-08-01 23:31:58 | INFO     | src.ml_layer.lstm_predictor | Predictor ready  rul_cap=125
+2026-08-01 23:31:58 | INFO     | src.ml_layer.lstm_predictor | Trainer initialised  device=cpu
+2026-08-01 23:31:58 | INFO     | src.ml_layer.lstm_predictor | LSTMPredictor built  n_features=14  h1=64  h2=32  dense_units=16  dropout=0.10
+2026-08-01 23:31:58 | INFO     | src.ml_layer.lstm_predictor | Engine split  train_units=16  val_units=4  train_windows=336  val_windows=84
+2026-08-01 23:31:58 | INFO     | src.ml_layer.lstm_predictor | Trainer initialised  device=cpu
+2026-08-01 23:31:58 | INFO     | src.ml_layer.lstm_predictor | LSTMPredictor built  n_features=14  h1=64  h2=32  dense_units=16  dropout=0.10
+2026-08-01 23:31:58 | INFO     | src.ml_layer.lstm_predictor | Model saved to 'C:\Users\SIDDHARTH\AppData\Local\Temp\pytest-of-SIDDHARTH\pytest-11\models0\lstm_model.pth'
+2026-08-01 23:31:58 | INFO     | src.ml_layer.lstm_predictor | Metadata saved to 'C:\Users\SIDDHARTH\AppData\Local\Temp\pytest-of-SIDDHARTH\pytest-11\models0\training_metadata.json'
+2026-08-01 23:31:58 | INFO     | src.ml_layer.lstm_predictor | Trainer initialised  device=cpu
+2026-08-01 23:31:58 | INFO     | src.ml_layer.lstm_predictor | LSTMPredictor built  n_features=14  h1=64  h2=32  dense_units=16  dropout=0.10
+2026-08-01 23:31:58 | INFO     | src.ml_layer.lstm_predictor | Model loaded from 'C:\Users\SIDDHARTH\AppData\Local\Temp\pytest-of-SIDDHARTH\pytest-11\models0\lstm_model.pth'  (eval mode)
+2026-08-01 23:31:58 | INFO     | src.ml_layer.lstm_predictor | Predictor ready  rul_cap=125
+2026-08-01 23:31:58 | INFO     | src.ml_layer.lstm_predictor | Fleet predictions complete  units=15  mean_rul=0.0  mean_health=0.0
+2026-08-01 23:31:58 | INFO     | src.ml_layer.lstm_predictor | Trainer initialised  device=cpu
+2026-08-01 23:31:58 | INFO     | src.ml_layer.lstm_predictor | LSTMPredictor built  n_features=14  h1=64  h2=32  dense_units=16  dropout=0.10
+2026-08-01 23:31:58 | INFO     | src.ml_layer.lstm_predictor | Model saved to 'C:\Users\SIDDHARTH\AppData\Local\Temp\pytest-of-SIDDHARTH\pytest-11\models0\lstm_model.pth'
+2026-08-01 23:31:58 | INFO     | src.ml_layer.lstm_predictor | Metadata saved to 'C:\Users\SIDDHARTH\AppData\Local\Temp\pytest-of-SIDDHARTH\pytest-11\models0\training_metadata.json'
+2026-08-01 23:31:58 | INFO     | src.ml_layer.lstm_predictor | Model loaded from 'C:\Users\SIDDHARTH\AppData\Local\Temp\pytest-of-SIDDHARTH\pytest-11\models0\lstm_model.pth'  (eval mode)
+2026-08-01 23:32:09 | INFO     | src.utils.config_loader | Config loaded from 'C:\Users\SIDDHARTH\Documents\Trace\config\config.yaml'
+2026-08-01 23:32:10 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-08-01 23:32:10 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-08-01 23:32:10 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-08-01 23:32:10 | INFO     | src.data_layer.loader | RUL computed — cap=125  RUL range=[0, 125]
+2026-08-01 23:32:10 | INFO     | src.data_layer.loader | === TRACE Data Pipeline START ===
+2026-08-01 23:32:10 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-08-01 23:32:10 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-08-01 23:32:10 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-08-01 23:32:10 | INFO     | src.data_layer.loader | RUL computed — cap=125  RUL range=[0, 125]
+2026-08-01 23:32:10 | INFO     | src.data_layer.loader | Dropped sensors ['s1', 's5', 's6', 's10', 's16', 's18', 's19']  remaining columns=20
+2026-08-01 23:32:10 | INFO     | src.data_layer.loader | Dropped sensors ['s1', 's5', 's6', 's10', 's16', 's18', 's19']  remaining columns=20
+2026-08-01 23:32:10 | INFO     | src.data_layer.loader | Feature names (17): ['op_setting_1', 'op_setting_2', 'op_setting_3', 's2', 's3', 's4', 's7', 's8', 's9', 's11', 's12', 's13', 's14', 's15', 's17', 's20', 's21']
+2026-08-01 23:32:10 | INFO     | src.data_layer.loader | Sequences built  X.shape=(17731, 30, 17)  y.shape=(17731,)  window_size=30
+2026-08-01 23:32:10 | INFO     | src.data_layer.loader | Sequences built  X.shape=(10196, 30, 17)  y.shape=(10196,)  window_size=30
+2026-08-01 23:32:10 | INFO     | src.data_layer.loader | Scaler saved to 'models/scaler.pkl'
+2026-08-01 23:32:10 | INFO     | src.data_layer.loader | === TRACE Data Pipeline COMPLETE ===
+2026-08-01 23:32:10 | INFO     | src.data_layer.health_score | Health scores computed  rows=20631  tier_counts={'HEALTHY': 10631, 'WARNING': 3800, 'WATCH': 3700, 'CRITICAL': 2500}
+2026-08-01 23:32:10 | INFO     | src.data_layer.health_score | Fleet snapshot ready  units=100  critical=0  warning=27  watch=32  healthy=41
+2026-08-01 23:32:10 | INFO     | src.ml_layer.lstm_predictor | LSTMPredictor built  n_features=14  h1=64  h2=32  dense_units=16  dropout=0.10
+2026-08-01 23:32:10 | INFO     | src.ml_layer.lstm_predictor | Trainer initialised  device=cpu
+2026-08-01 23:32:10 | INFO     | src.ml_layer.lstm_predictor | LSTMPredictor built  n_features=14  h1=64  h2=32  dense_units=16  dropout=0.10
+2026-08-01 23:32:12 | INFO     | src.ml_layer.lstm_predictor | Model saved to 'C:\Users\SIDDHARTH\AppData\Local\Temp\pytest-of-SIDDHARTH\pytest-12\models0\lstm_model.pth'
+2026-08-01 23:32:12 | INFO     | src.ml_layer.lstm_predictor | Metadata saved to 'C:\Users\SIDDHARTH\AppData\Local\Temp\pytest-of-SIDDHARTH\pytest-12\models0\training_metadata.json'
+2026-08-01 23:32:12 | INFO     | src.ml_layer.lstm_predictor | Trainer initialised  device=cpu
+2026-08-01 23:32:12 | INFO     | src.ml_layer.lstm_predictor | LSTMPredictor built  n_features=14  h1=64  h2=32  dense_units=16  dropout=0.10
+2026-08-01 23:32:12 | INFO     | src.ml_layer.lstm_predictor | Model loaded from 'C:\Users\SIDDHARTH\AppData\Local\Temp\pytest-of-SIDDHARTH\pytest-12\models0\lstm_model.pth'  (eval mode)
+2026-08-01 23:32:12 | INFO     | src.ml_layer.lstm_predictor | Predictor ready  rul_cap=125
+2026-08-01 23:32:12 | INFO     | src.ml_layer.lstm_predictor | Trainer initialised  device=cpu
+2026-08-01 23:32:12 | INFO     | src.ml_layer.lstm_predictor | LSTMPredictor built  n_features=14  h1=64  h2=32  dense_units=16  dropout=0.10
+2026-08-01 23:32:12 | INFO     | src.ml_layer.lstm_predictor | Engine split  train_units=16  val_units=4  train_windows=336  val_windows=84
+2026-08-01 23:32:12 | INFO     | src.ml_layer.lstm_predictor | Trainer initialised  device=cpu
+2026-08-01 23:32:12 | INFO     | src.ml_layer.lstm_predictor | LSTMPredictor built  n_features=14  h1=64  h2=32  dense_units=16  dropout=0.10
+2026-08-01 23:32:12 | INFO     | src.ml_layer.lstm_predictor | Model saved to 'C:\Users\SIDDHARTH\AppData\Local\Temp\pytest-of-SIDDHARTH\pytest-12\models0\lstm_model.pth'
+2026-08-01 23:32:12 | INFO     | src.ml_layer.lstm_predictor | Metadata saved to 'C:\Users\SIDDHARTH\AppData\Local\Temp\pytest-of-SIDDHARTH\pytest-12\models0\training_metadata.json'
+2026-08-01 23:32:12 | INFO     | src.ml_layer.lstm_predictor | Trainer initialised  device=cpu
+2026-08-01 23:32:12 | INFO     | src.ml_layer.lstm_predictor | LSTMPredictor built  n_features=14  h1=64  h2=32  dense_units=16  dropout=0.10
+2026-08-01 23:32:12 | INFO     | src.ml_layer.lstm_predictor | Model loaded from 'C:\Users\SIDDHARTH\AppData\Local\Temp\pytest-of-SIDDHARTH\pytest-12\models0\lstm_model.pth'  (eval mode)
+2026-08-01 23:32:12 | INFO     | src.ml_layer.lstm_predictor | Predictor ready  rul_cap=125
+2026-08-01 23:32:12 | INFO     | src.ml_layer.lstm_predictor | Fleet predictions complete  units=15  mean_rul=0.0  mean_health=0.0
+2026-08-01 23:32:12 | INFO     | src.ml_layer.lstm_predictor | Trainer initialised  device=cpu
+2026-08-01 23:32:12 | INFO     | src.ml_layer.lstm_predictor | LSTMPredictor built  n_features=14  h1=64  h2=32  dense_units=16  dropout=0.10
+2026-08-01 23:32:12 | INFO     | src.ml_layer.lstm_predictor | Model saved to 'C:\Users\SIDDHARTH\AppData\Local\Temp\pytest-of-SIDDHARTH\pytest-12\models0\lstm_model.pth'
+2026-08-01 23:32:12 | INFO     | src.ml_layer.lstm_predictor | Metadata saved to 'C:\Users\SIDDHARTH\AppData\Local\Temp\pytest-of-SIDDHARTH\pytest-12\models0\training_metadata.json'
+2026-08-01 23:32:12 | INFO     | src.ml_layer.lstm_predictor | Model loaded from 'C:\Users\SIDDHARTH\AppData\Local\Temp\pytest-of-SIDDHARTH\pytest-12\models0\lstm_model.pth'  (eval mode)
+2026-08-01 23:36:50 | INFO     | src.utils.config_loader | Config loaded from 'C:\Users\SIDDHARTH\Documents\Trace\config\config.yaml'
+2026-08-01 23:36:51 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-08-01 23:36:51 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-08-01 23:36:51 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-08-01 23:36:51 | INFO     | src.data_layer.loader | RUL computed — cap=125  RUL range=[0, 125]
+2026-08-01 23:36:51 | INFO     | src.data_layer.health_score | Health scores computed  rows=20631  tier_counts={'HEALTHY': 10631, 'WARNING': 3800, 'WATCH': 3700, 'CRITICAL': 2500}
+2026-08-01 23:36:51 | INFO     | src.data_layer.health_score | Fleet snapshot ready  units=100  critical=0  warning=27  watch=32  healthy=41
+2026-08-01 23:36:53 | INFO     | src.ml_layer.lstm_predictor | Trainer initialised  device=cpu
+2026-08-01 23:36:53 | INFO     | src.ml_layer.lstm_predictor | LSTMPredictor built  n_features=14  h1=64  h2=32  dense_units=16  dropout=0.20
+2026-08-01 23:39:25 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-08-01 23:39:26 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-08-01 23:39:26 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-08-01 23:39:26 | INFO     | src.data_layer.loader | RUL computed — cap=125  RUL range=[0, 125]
+2026-08-01 23:39:26 | INFO     | src.data_layer.health_score | Health scores computed  rows=20631  tier_counts={'HEALTHY': 10631, 'WARNING': 3800, 'WATCH': 3700, 'CRITICAL': 2500}
+2026-08-01 23:39:26 | INFO     | src.data_layer.health_score | Fleet snapshot ready  units=100  critical=0  warning=27  watch=32  healthy=41
+2026-08-01 23:40:19 | INFO     | src.utils.config_loader | Config loaded from 'C:\Users\SIDDHARTH\Documents\Trace\config\config.yaml'
+2026-08-01 23:40:19 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-08-01 23:40:20 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-08-01 23:40:20 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-08-01 23:40:20 | INFO     | src.data_layer.loader | RUL computed — cap=125  RUL range=[0, 125]
+2026-08-01 23:40:20 | INFO     | src.data_layer.health_score | Health scores computed  rows=20631  tier_counts={'HEALTHY': 10631, 'WARNING': 3800, 'WATCH': 3700, 'CRITICAL': 2500}
+2026-08-01 23:40:20 | INFO     | src.data_layer.health_score | Fleet snapshot ready  units=100  critical=0  warning=27  watch=32  healthy=41
+2026-08-01 23:40:21 | INFO     | src.ml_layer.lstm_predictor | Trainer initialised  device=cpu
+2026-08-01 23:40:21 | INFO     | src.ml_layer.lstm_predictor | LSTMPredictor built  n_features=17  h1=64  h2=32  dense_units=16  dropout=0.20
+2026-08-01 23:40:22 | INFO     | src.ml_layer.lstm_predictor | Model loaded from 'models/lstm_model.pth'  (eval mode)
+2026-08-01 23:40:22 | INFO     | src.ml_layer.lstm_predictor | Predictor ready  rul_cap=125
+2026-08-01 23:40:23 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-08-01 23:40:23 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-08-01 23:40:23 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-08-01 23:40:23 | INFO     | src.data_layer.loader | Dropped sensors ['s1', 's5', 's6', 's10', 's16', 's18', 's19']  remaining columns=20
+2026-08-01 23:40:23 | INFO     | src.ml_layer.lstm_predictor | Sequences built  X.shape=(10196, 30, 17)  y.shape=(10196,)  window_size=30  units=100
+2026-08-01 23:40:25 | INFO     | src.ml_layer.lstm_predictor | Fleet predictions complete  units=100  mean_rul=76.5  mean_health=61.2
+2026-08-01 23:40:54 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-08-01 23:40:55 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-08-01 23:40:55 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-08-01 23:40:55 | INFO     | src.data_layer.loader | RUL computed — cap=125  RUL range=[0, 125]
+2026-08-01 23:40:55 | INFO     | src.data_layer.health_score | Health scores computed  rows=20631  tier_counts={'HEALTHY': 10631, 'WARNING': 3800, 'WATCH': 3700, 'CRITICAL': 2500}
+2026-08-01 23:40:55 | INFO     | src.data_layer.health_score | Fleet snapshot ready  units=100  critical=0  warning=27  watch=32  healthy=41
+2026-08-01 23:40:55 | INFO     | src.ml_layer.lstm_predictor | Trainer initialised  device=cpu
+2026-08-01 23:40:55 | INFO     | src.ml_layer.lstm_predictor | LSTMPredictor built  n_features=17  h1=64  h2=32  dense_units=16  dropout=0.20
+2026-08-01 23:40:55 | INFO     | src.ml_layer.lstm_predictor | Model loaded from 'models/lstm_model.pth'  (eval mode)
+2026-08-01 23:40:55 | INFO     | src.ml_layer.lstm_predictor | Predictor ready  rul_cap=125
+2026-08-01 23:40:55 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-08-01 23:40:55 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-08-01 23:40:55 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-08-01 23:40:56 | INFO     | src.data_layer.loader | Dropped sensors ['s1', 's5', 's6', 's10', 's16', 's18', 's19']  remaining columns=20
+2026-08-01 23:40:56 | INFO     | src.ml_layer.lstm_predictor | Sequences built  X.shape=(10196, 30, 17)  y.shape=(10196,)  window_size=30  units=100
+2026-08-01 23:40:59 | INFO     | src.ml_layer.lstm_predictor | Fleet predictions complete  units=100  mean_rul=76.5  mean_health=61.2
