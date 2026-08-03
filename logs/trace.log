@@ -301,3 +301,89 @@
 2026-08-01 23:40:56 | INFO     | src.data_layer.loader | Dropped sensors ['s1', 's5', 's6', 's10', 's16', 's18', 's19']  remaining columns=20
 2026-08-01 23:40:56 | INFO     | src.ml_layer.lstm_predictor | Sequences built  X.shape=(10196, 30, 17)  y.shape=(10196,)  window_size=30  units=100
 2026-08-01 23:40:59 | INFO     | src.ml_layer.lstm_predictor | Fleet predictions complete  units=100  mean_rul=76.5  mean_health=61.2
+2026-08-03 22:12:39 | WARNING  | src.reasoning_layer.hypothesis_reasoner | google-generativeai not installed — Gemini disabled.
+2026-08-03 22:12:39 | INFO     | src.reasoning_layer.hypothesis_reasoner | HypothesisReasoner initialised  fleet_units=10  timeline=no  gemini_available=False
+2026-08-03 22:12:39 | WARNING  | src.reasoning_layer.hypothesis_reasoner | google-generativeai not installed — Gemini disabled.
+2026-08-03 22:12:39 | INFO     | src.reasoning_layer.hypothesis_reasoner | HypothesisReasoner initialised  fleet_units=10  timeline=no  gemini_available=False
+2026-08-03 22:12:39 | WARNING  | src.reasoning_layer.hypothesis_reasoner | google-generativeai not installed — Gemini disabled.
+2026-08-03 22:12:39 | INFO     | src.reasoning_layer.hypothesis_reasoner | HypothesisReasoner initialised  fleet_units=10  timeline=no  gemini_available=False
+2026-08-03 22:12:39 | WARNING  | src.reasoning_layer.hypothesis_reasoner | Gemini parser call failed: No module named 'google.generativeai' — falling back
+2026-08-03 22:12:39 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=threshold_query  confidence=0.85
+2026-08-03 22:12:39 | WARNING  | src.reasoning_layer.hypothesis_reasoner | google-generativeai not installed — Gemini disabled.
+2026-08-03 22:12:39 | INFO     | src.reasoning_layer.hypothesis_reasoner | HypothesisReasoner initialised  fleet_units=10  timeline=no  gemini_available=False
+2026-08-03 22:12:39 | INFO     | src.reasoning_layer.hypothesis_reasoner | Threshold query  threshold=30  count=3  most_critical=Engine 9
+2026-08-03 22:12:39 | WARNING  | src.reasoning_layer.hypothesis_reasoner | google-generativeai not installed — Gemini disabled.
+2026-08-03 22:12:39 | INFO     | src.reasoning_layer.hypothesis_reasoner | HypothesisReasoner initialised  fleet_units=10  timeline=no  gemini_available=False
+2026-08-03 22:12:39 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Which vehicles need maintenance soon?'
+2026-08-03 22:12:39 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=threshold_query  confidence=0.85
+2026-08-03 22:12:39 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=threshold_query
+2026-08-03 22:12:39 | INFO     | src.reasoning_layer.hypothesis_reasoner | Threshold query  threshold=30  count=3  most_critical=Engine 9
+2026-08-03 22:12:39 | WARNING  | src.reasoning_layer.hypothesis_reasoner | google-generativeai not installed — Gemini disabled.
+2026-08-03 22:12:39 | INFO     | src.reasoning_layer.hypothesis_reasoner | HypothesisReasoner initialised  fleet_units=10  timeline=no  gemini_available=False
+2026-08-03 22:12:39 | INFO     | src.reasoning_layer.hypothesis_reasoner | Ranking query  top_n=5  worst={'unit_id': 'Engine 9', 'health_score': 5.0, 'risk_tier': 'CRITICAL', 'predicted_rul': 5.0}
+2026-08-03 22:16:05 | INFO     | src.utils.config_loader | Config loaded from 'C:\Users\SIDDHARTH\Documents\Trace\config\config.yaml'
+2026-08-03 22:16:06 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-08-03 22:16:06 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-08-03 22:16:06 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-08-03 22:16:06 | INFO     | src.data_layer.loader | RUL computed — cap=125  RUL range=[0, 125]
+2026-08-03 22:16:06 | INFO     | src.data_layer.health_score | Health scores computed  rows=20631  tier_counts={'HEALTHY': 10631, 'WARNING': 3800, 'WATCH': 3700, 'CRITICAL': 2500}
+2026-08-03 22:16:06 | INFO     | src.data_layer.health_score | Fleet snapshot ready  units=100  critical=0  warning=27  watch=32  healthy=41
+2026-08-03 22:16:13 | INFO     | src.ml_layer.lstm_predictor | Trainer initialised  device=cpu
+2026-08-03 22:16:13 | INFO     | src.ml_layer.lstm_predictor | LSTMPredictor built  n_features=17  h1=64  h2=32  dense_units=16  dropout=0.20
+2026-08-03 22:16:16 | INFO     | src.ml_layer.lstm_predictor | Model loaded from 'models/lstm_model.pth'  (eval mode)
+2026-08-03 22:16:16 | INFO     | src.ml_layer.lstm_predictor | Predictor ready  rul_cap=125
+2026-08-03 22:16:16 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-08-03 22:16:16 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-08-03 22:16:16 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-08-03 22:16:16 | INFO     | src.data_layer.loader | Dropped sensors ['s1', 's5', 's6', 's10', 's16', 's18', 's19']  remaining columns=20
+2026-08-03 22:16:16 | INFO     | src.ml_layer.lstm_predictor | Sequences built  X.shape=(10196, 30, 17)  y.shape=(10196,)  window_size=30  units=100
+2026-08-03 22:16:20 | INFO     | src.ml_layer.lstm_predictor | Fleet predictions complete  units=100  mean_rul=76.5  mean_health=61.2
+2026-08-03 22:17:06 | WARNING  | src.reasoning_layer.hypothesis_reasoner | google-generativeai not installed — Gemini disabled.
+2026-08-03 22:17:06 | INFO     | src.reasoning_layer.hypothesis_reasoner | HypothesisReasoner initialised  fleet_units=100  timeline=yes  gemini_available=False
+2026-08-03 22:17:06 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='which vehicle need maintainence in next 30 days'
+2026-08-03 22:17:06 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=unknown  confidence=0.30
+2026-08-03 22:17:06 | WARNING  | src.reasoning_layer.hypothesis_reasoner | No analysis handler for query_type='unknown'
+2026-08-03 22:22:03 | WARNING  | src.reasoning_layer.hypothesis_reasoner | google-generativeai not installed — Gemini disabled.
+2026-08-03 22:22:03 | INFO     | src.reasoning_layer.hypothesis_reasoner | HypothesisReasoner initialised  fleet_units=10  timeline=no  gemini_available=False
+2026-08-03 22:22:03 | WARNING  | src.reasoning_layer.hypothesis_reasoner | google-generativeai not installed — Gemini disabled.
+2026-08-03 22:22:03 | INFO     | src.reasoning_layer.hypothesis_reasoner | HypothesisReasoner initialised  fleet_units=10  timeline=no  gemini_available=False
+2026-08-03 22:22:03 | WARNING  | src.reasoning_layer.hypothesis_reasoner | google-generativeai not installed — Gemini disabled.
+2026-08-03 22:22:03 | INFO     | src.reasoning_layer.hypothesis_reasoner | HypothesisReasoner initialised  fleet_units=10  timeline=no  gemini_available=False
+2026-08-03 22:22:03 | WARNING  | src.reasoning_layer.hypothesis_reasoner | Gemini parser call failed: No module named 'google.generativeai' — falling back
+2026-08-03 22:22:03 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=unknown  confidence=0.30
+2026-08-03 22:22:03 | WARNING  | src.reasoning_layer.hypothesis_reasoner | google-generativeai not installed — Gemini disabled.
+2026-08-03 22:22:03 | INFO     | src.reasoning_layer.hypothesis_reasoner | HypothesisReasoner initialised  fleet_units=10  timeline=no  gemini_available=False
+2026-08-03 22:22:03 | INFO     | src.reasoning_layer.hypothesis_reasoner | Threshold query  threshold=30  count=3  most_critical=Engine 9
+2026-08-03 22:22:03 | WARNING  | src.reasoning_layer.hypothesis_reasoner | google-generativeai not installed — Gemini disabled.
+2026-08-03 22:22:03 | INFO     | src.reasoning_layer.hypothesis_reasoner | HypothesisReasoner initialised  fleet_units=10  timeline=no  gemini_available=False
+2026-08-03 22:22:03 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Which vehicles need maintenance soon?'
+2026-08-03 22:22:03 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=threshold_query  confidence=0.85
+2026-08-03 22:22:03 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=threshold_query
+2026-08-03 22:22:03 | INFO     | src.reasoning_layer.hypothesis_reasoner | Threshold query  threshold=30  count=3  most_critical=Engine 9
+2026-08-03 22:22:03 | WARNING  | src.reasoning_layer.hypothesis_reasoner | google-generativeai not installed — Gemini disabled.
+2026-08-03 22:22:03 | INFO     | src.reasoning_layer.hypothesis_reasoner | HypothesisReasoner initialised  fleet_units=10  timeline=no  gemini_available=False
+2026-08-03 22:22:03 | INFO     | src.reasoning_layer.hypothesis_reasoner | Ranking query  top_n=5  worst={'unit_id': 'Engine 9', 'health_score': 5.0, 'risk_tier': 'CRITICAL', 'predicted_rul': 5.0}
+2026-08-03 22:22:26 | INFO     | src.utils.config_loader | Config loaded from 'C:\Users\SIDDHARTH\Documents\Trace\config\config.yaml'
+2026-08-03 22:22:39 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='which vehicle need maintainence in next 30 days'
+2026-08-03 22:22:39 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=unknown  confidence=0.30
+2026-08-03 22:22:39 | WARNING  | src.reasoning_layer.hypothesis_reasoner | No analysis handler for query_type='unknown'
+2026-08-03 22:22:56 | WARNING  | src.reasoning_layer.hypothesis_reasoner | google-generativeai not installed — Gemini disabled.
+2026-08-03 22:22:56 | INFO     | src.reasoning_layer.hypothesis_reasoner | HypothesisReasoner initialised  fleet_units=100  timeline=yes  gemini_available=False
+2026-08-03 22:22:56 | INFO     | src.reasoning_layer.hypothesis_reasoner | Detected GEMINI_API_KEY after init — re-initialising Gemini
+2026-08-03 22:22:56 | WARNING  | src.reasoning_layer.hypothesis_reasoner | google-generativeai not installed — Gemini disabled.
+2026-08-03 22:22:56 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='which vehicle need maintainence in next 30 days'
+2026-08-03 22:22:56 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=threshold_query  confidence=0.85
+2026-08-03 22:22:56 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=threshold_query
+2026-08-03 22:22:56 | INFO     | src.reasoning_layer.hypothesis_reasoner | Threshold query  threshold=30  count=21  most_critical=Engine 34
+2026-08-03 22:23:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Detected GEMINI_API_KEY after init — re-initialising Gemini
+2026-08-03 22:23:31 | WARNING  | src.reasoning_layer.hypothesis_reasoner | google-generativeai not installed — Gemini disabled.
+2026-08-03 22:23:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='top 5 vehicles at risk'
+2026-08-03 22:23:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=ranking_query  confidence=0.80
+2026-08-03 22:23:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=ranking_query
+2026-08-03 22:23:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Ranking query  top_n=5  worst={'unit_id': 'Engine 34', 'health_score': 4.1, 'risk_tier': 'CRITICAL', 'predicted_rul': 5.1}
+2026-08-03 22:23:55 | INFO     | src.reasoning_layer.hypothesis_reasoner | Detected GEMINI_API_KEY after init — re-initialising Gemini
+2026-08-03 22:23:55 | WARNING  | src.reasoning_layer.hypothesis_reasoner | google-generativeai not installed — Gemini disabled.
+2026-08-03 22:23:55 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='is health improving or not'
+2026-08-03 22:23:55 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=trend_analysis  confidence=0.80
+2026-08-03 22:23:55 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=trend_analysis
+2026-08-03 22:23:55 | INFO     | src.reasoning_layer.hypothesis_reasoner | Trend analysis  slope=-0.41482  direction=declining  window=49

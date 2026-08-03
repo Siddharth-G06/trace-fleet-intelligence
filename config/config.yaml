@@ -13,8 +13,24 @@ health_score:
   warning_threshold: 20
 
 gemini:
-  api_key: ""
+  api_key: ""           # filled from os.environ GEMINI_API_KEY
   model: gemini-1.5-flash
+  parser_temperature: 0.0
+  synthesis_temperature: 0.3
+  max_output_tokens: 500
+
+reasoning:
+  supported_query_types:
+    - fleet_comparison
+    - threshold_query
+    - anomaly_hunt
+    - ranking_query
+    - trend_analysis
+  default_top_n: 5
+  default_threshold_cycles: 30
+  group_a_units: [1, 50]     # unit_id range for Group A (simulated depot)
+  group_b_units: [51, 100]   # unit_id range for Group B
+  health_decline_window: 20  # cycles to compute decline rate over
 
 chromadb:
   persist_dir: data/chromadb
