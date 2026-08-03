@@ -1,10 +1,11 @@
 """
-TRACE — Fleet Intelligence  |  Modules 1 & 2: Fleet Health + LSTM Predictions
+TRACE — Fleet Intelligence  |  Modules 1–3: Fleet Health + LSTM Predictions + AI Reasoning
 
 Streamlit entry-point for the TRACE hypothesis-driven fleet intelligence
-system.  Module 1 provides the real-time fleet health dashboard backed by
-the NASA CMAPSS FD001 dataset.  Module 2 adds LSTM RUL predictions,
-predicted vs actual analysis, and per-engine health timelines.
+system.  Module 1 provides the real-time fleet health dashboard.  Module 2
+adds LSTM RUL predictions and per-engine health timelines.  Module 3
+integrates the Gemini-powered HypothesisReasoner for natural-language
+fleet intelligence queries.
 """
 
 from __future__ import annotations
@@ -223,6 +224,11 @@ with st.sidebar:
         st.rerun()
     st.caption("Clears cached data and reloads the pipeline.")
 
+    if st.button("🧠  Reset Assistant", use_container_width=True):
+        st.cache_resource.clear()
+        st.rerun()
+    st.caption("Re-initialises the Fleet Assistant with any new API key.")
+
     # ── Module 2: Training Metadata ───────────────────────────────────────────
     st.markdown("---")
     st.markdown("### 🧠 LSTM Model Metrics")
@@ -283,10 +289,25 @@ with col4:
 st.divider()
 
 
+# ── Module 3: Reasoner loader ────────────────────────────────────────────────
+@st.cache_resource(show_spinner="Initialising Fleet Assistant…")
+def load_reasoner(_fleet_df, _timeline_df):
+    """Instantiate HypothesisReasoner (cached as a resource)."""
+    try:
+        from src.reasoning_layer.hypothesis_reasoner import HypothesisReasoner
+        return HypothesisReasoner(cfg, _fleet_df, health_timeline_df=_timeline_df)
+    except Exception as exc:
+        return exc
+
+
 # ═══════════════════════════════════════════════════════════════════════════════
-# TABS — Module 1 | Module 2
+# TABS — Module 1 | Module 2 | Module 3
 # ═══════════════════════════════════════════════════════════════════════════════
-tab1, tab2 = st.tabs(["🛡️  Fleet Health Overview", "🤖  Predicted vs Actual"])
+tab1, tab2, tab3 = st.tabs([
+    "🛡️  Fleet Health Overview",
+    "🤖  Predicted vs Actual",
+    "🧠  Fleet Assistant",
+])
 
 
 # ── TAB 1: Fleet Health Overview (Module 1 content) ───────────────────────────
@@ -684,10 +705,199 @@ with tab2:
     st.plotly_chart(fig_timeline, width="stretch")
 
 
+# ── TAB 3: Fleet Assistant (Module 3 content) ─────────────────────────────────
+with tab3:
+    # ── Additional CSS for Fleet Assistant tab ────────────────────────────────
+    st.markdown(
+        """
+        <style>
+        .chip-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+        .verdict-box {
+            background: rgba(88,166,255,0.06);
+            border: 1px solid rgba(88,166,255,0.2);
+            border-radius: 12px;
+            padding: 1.2rem 1.5rem;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    st.markdown("### 🧠 Fleet Assistant")
+    st.caption(
+        "Ask any question about your fleet in plain English. "
+        "TRACE will analyse real vehicle data and return a grounded verdict."
+    )
+
+    # ── Example question chips ────────────────────────────────────────────────
+    EXAMPLE_QUESTIONS = [
+        "Which vehicles will need maintenance in the next 30 cycles?",
+        "Show me the 5 most at-risk vehicles right now",
+        "Are Group A vehicles degrading faster than Group B?",
+        "Which vehicles show unusual health patterns?",
+        "Is fleet health improving or declining over the last 50 cycles?",
+    ]
+
+    if "fleet_question" not in st.session_state:
+        st.session_state["fleet_question"] = ""
+
+    st.markdown("**Example questions — click to fill:**")
+    chip_cols = st.columns(len(EXAMPLE_QUESTIONS))
+    for col, eq in zip(chip_cols, EXAMPLE_QUESTIONS):
+        with col:
+            if st.button(eq[:40] + "…", key=f"chip_{eq[:20]}", use_container_width=True):
+                st.session_state["fleet_question"] = eq
+
+    st.divider()
+
+    # ── Question input ────────────────────────────────────────────────────────
+    question_input = st.text_input(
+        "Ask a question about your fleet…",
+        value=st.session_state["fleet_question"],
+        placeholder="e.g. Which vehicles will need maintenance in the next 30 cycles?",
+        key="fleet_question_input",
+        label_visibility="collapsed",
+    )
+    submit_col, _ = st.columns([1, 4])
+    with submit_col:
+        submitted = st.button(
+            "🔍  Analyse",
+            type="primary",
+            use_container_width=True,
+            key="fleet_submit",
+        )
+
+    if submitted and question_input.strip():
+        # ── Load reasoner (uses df_scored as timeline, fleet_pred_df as fleet) ─
+        timeline_df = df_scored
+        reasoner_fleet_df = fleet_pred_df if fleet_pred_df is not None else None
+
+        if reasoner_fleet_df is None:
+            # Fallback: build a usable fleet_data from Module 1 snapshot
+            snap = fleet_snapshot.rename(columns={
+                "health_score":  "predicted_health_score",
+                "rul_remaining": "predicted_rul",
+                "current_cycle": "last_cycle",
+            })
+            reasoner_fleet_df = snap
+
+        reasoner = load_reasoner(reasoner_fleet_df, timeline_df)
+
+        if isinstance(reasoner, Exception):
+            st.error(
+                f"Fleet Assistant unavailable: {reasoner}\n\n"
+                "Ensure `src/reasoning_layer/hypothesis_reasoner.py` is present."
+            )
+        else:
+            with st.spinner("Analysing your fleet…"):
+                verdict = reasoner.analyze(question_input.strip())
+
+            # ── Verdict display ───────────────────────────────────────────────
+            st.divider()
+
+            # Backend badge
+            backend_label = "✨ Gemini" if verdict.used_gemini else "⚙️ Rule-based"
+            st.markdown(
+                f"<span style='font-size:0.78rem;color:#8b949e;'>"
+                f"Query type: <code>{verdict.query_type}</code> &nbsp;·&nbsp; "
+                f"Backend: {backend_label} &nbsp;·&nbsp; "
+                f"Computed at: {verdict.computed_at.strftime('%H:%M:%S')} UTC"
+                f"</span>",
+                unsafe_allow_html=True,
+            )
+            st.markdown("")
+
+            # Verdict summary (large info box)
+            st.info(verdict.verdict_summary, icon="🔍")
+
+            # Metric row
+            m1, m2, m3 = st.columns(3)
+            with m1:
+                st.metric(
+                    "Confirmed",
+                    "✅ Yes" if verdict.confirmed else "❌ No",
+                    help="Whether the data supports the hypothesis in the question",
+                )
+            with m2:
+                st.metric(
+                    "Confidence",
+                    f"{verdict.confidence * 100:.0f}%",
+                    help="Parser confidence in query classification",
+                )
+            with m3:
+                st.metric(
+                    "Supporting Vehicles",
+                    len(verdict.supporting_vehicles),
+                    help="Number of vehicles directly cited in the analysis",
+                )
+
+            st.divider()
+
+            # Supporting vehicles table
+            if verdict.supporting_vehicles:
+                st.markdown("### Supporting Vehicles")
+                sv_rows = []
+                for veh in verdict.supporting_vehicles:
+                    # Try to look up health score from fleet_pred_df
+                    try:
+                        uid_num = int(veh.replace("Engine ", ""))
+                        row = reasoner_fleet_df[
+                            reasoner_fleet_df["unit_id"] == uid_num
+                        ]
+                        if not row.empty:
+                            sv_rows.append({
+                                "Vehicle": veh,
+                                "Health Score": round(float(row["predicted_health_score"].iloc[0]), 1),
+                                "Predicted RUL": round(float(row["predicted_rul"].iloc[0]), 1),
+                                "Risk Tier": str(row["risk_tier"].iloc[0]),
+                            })
+                        else:
+                            sv_rows.append({"Vehicle": veh, "Health Score": "N/A", "Predicted RUL": "N/A", "Risk Tier": "N/A"})
+                    except Exception:
+                        sv_rows.append({"Vehicle": veh, "Health Score": "N/A", "Predicted RUL": "N/A", "Risk Tier": "N/A"})
+
+                sv_df = pd.DataFrame(sv_rows)
+                st.dataframe(sv_df, hide_index=True, use_container_width=True)
+
+            # Key metrics
+            if verdict.key_metrics:
+                st.markdown("### Key Metrics")
+                st.json(verdict.key_metrics)
+
+            # Recommended action (success box)
+            st.success(f"**Recommended Action:** {verdict.recommended_action}", icon="⚡")
+
+    elif submitted and not question_input.strip():
+        st.warning("Please enter a question before submitting.", icon="⚠️")
+
+    if not submitted:
+        # ── Placeholder when no question has been asked yet ───────────────────
+        st.markdown(
+            """
+            <div style='
+                margin-top: 2rem;
+                padding: 2.5rem;
+                border: 1px dashed rgba(255,255,255,0.12);
+                border-radius: 14px;
+                text-align: center;
+                color: #484f58;
+            '>
+                <div style='font-size: 2.5rem; margin-bottom: 0.8rem;'>🧠</div>
+                <div style='font-size: 1.1rem; font-weight: 600; color: #8b949e;
+                    margin-bottom: 0.4rem;'>TRACE Fleet Assistant</div>
+                <div style='font-size: 0.88rem;'>
+                    Ask any natural-language question about your fleet.<br>
+                    Powered by Gemini AI + real vehicle health data.
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+
 # ── Footer ──────────────────────────────────────────────────────────────────────
 st.markdown("---")
 st.caption(
-    "TRACE · Modules 1 & 2 — Data Foundation + LSTM RUL Prediction  ·  "
-    "Built on NASA CMAPSS FD001  ·  "
-    "Next: Gemini reasoning · ChromaDB evidence"
+    "TRACE · Modules 1–3 — Data Foundation · LSTM RUL Prediction · Gemini Fleet Assistant  ·  "
+    "Built on NASA CMAPSS FD001"
 )
