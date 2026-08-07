@@ -53,3 +53,13 @@ model:
   train_val_split: 0.8
   model_path: models/lstm_model.pth
   metadata_path: models/training_metadata.json
+
+evidence:
+  chromadb_persist_dir: data/chromadb
+  collection_name: trace_fleet_events
+  embedding_model: all-MiniLM-L6-v2
+  top_k_results: 5
+  health_drop_threshold: 5.0
+  sustained_decline_window: 10
+  recovery_threshold: 3.0
+  relevance_display_threshold: 0.5
