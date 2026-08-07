@@ -291,17 +291,70 @@ st.divider()
 
 # ── Module 3: Reasoner loader ────────────────────────────────────────────────
 @st.cache_resource(show_spinner="Initialising Fleet Assistant…")
-def load_reasoner(_fleet_df, _timeline_df):
+def load_reasoner(_fleet_df, _timeline_df, _rag_retriever):
     """Instantiate HypothesisReasoner (cached as a resource)."""
     try:
         from src.reasoning_layer.hypothesis_reasoner import HypothesisReasoner
-        return HypothesisReasoner(cfg, _fleet_df, health_timeline_df=_timeline_df)
+        return HypothesisReasoner(
+            cfg, _fleet_df,
+            health_timeline_df=_timeline_df,
+            rag_retriever=_rag_retriever,
+        )
     except Exception as exc:
         return exc
 
 
+# ── Module 4: Evidence Layer ───────────────────────────────────────────────────
+@st.cache_resource(show_spinner="Connecting to ChromaDB…")
+def load_chroma_client():
+    """Initialise a persistent ChromaDB client (cached as a resource)."""
+    try:
+        import chromadb  # type: ignore
+        from pathlib import Path
+        persist_dir: str = cfg["evidence"]["chromadb_persist_dir"]
+        Path(persist_dir).mkdir(parents=True, exist_ok=True)
+        return chromadb.PersistentClient(path=persist_dir)
+    except Exception as exc:
+        return exc
+
+
+@st.cache_resource(show_spinner="Setting up Evidence Logger…")
+def load_event_logger(_chroma_client, _timeline_df):
+    """Initialise EventLogger and run idempotent setup (cached as a resource)."""
+    try:
+        from src.evidence_layer.event_logger import EventLogger
+        el = EventLogger(cfg, _chroma_client)
+        el.setup(_timeline_df)
+        return el
+    except Exception as exc:
+        return exc
+
+
+@st.cache_resource(show_spinner="Loading RAG Retriever…")
+def load_rag_retriever(_chroma_client, _embedder):
+    """Initialise RAGRetriever (cached as a resource)."""
+    try:
+        from src.evidence_layer.rag_retriever import RAGRetriever
+        return RAGRetriever(cfg, _chroma_client, embedder=_embedder)
+    except Exception as exc:
+        return exc
+
+
+# ─── Initialise evidence layer ────────────────────────────────────────────────
+_chroma_client = load_chroma_client()
+_event_logger = None
+_rag_retriever = None
+_evidence_available = False
+if not isinstance(_chroma_client, Exception):
+    _event_logger = load_event_logger(_chroma_client, df_scored)
+    if not isinstance(_event_logger, Exception):
+        _embedder = getattr(_event_logger, "_embedder", None)
+        _rag_retriever = load_rag_retriever(_chroma_client, _embedder)
+        if not isinstance(_rag_retriever, Exception):
+            _evidence_available = True
+
 # ═══════════════════════════════════════════════════════════════════════════════
-# TABS — Module 1 | Module 2 | Module 3
+# TABS — Module 1 | Module 2 | Module 3 | Module 4
 # ═══════════════════════════════════════════════════════════════════════════════
 tab1, tab2, tab3 = st.tabs([
     "🛡️  Fleet Health Overview",
@@ -455,6 +508,49 @@ with tab1:
 
     st.plotly_chart(fig, width="stretch")
 
+    # ── Per-vehicle drill-down (Module 4) ─────────────────────────────────────
+    if _evidence_available and _rag_retriever is not None:
+        st.divider()
+        st.markdown("### 🔎 Vehicle Event History")
+        st.caption(
+            "Select a vehicle to inspect its full health-event history "
+            "retrieved from the evidence store."
+        )
+        all_unit_ids_t1 = sorted(fleet_snapshot["unit_id"].unique().tolist())
+        drill_unit = st.selectbox(
+            "Inspect a specific vehicle",
+            options=all_unit_ids_t1,
+            format_func=lambda x: f"Engine {x}",
+            key="tab1_drill_selectbox",
+        )
+        if drill_unit:
+            with st.spinner(f"Fetching events for Engine {drill_unit}…"):
+                vehicle_events = _rag_retriever.retrieve_for_vehicle(
+                    unit_id=int(drill_unit), top_k=8
+                )
+            if vehicle_events:
+                for ev in vehicle_events:
+                    icon = {
+                        "health_drop":      "⬇️",
+                        "critical_entry":   "🔴",
+                        "sustained_decline": "📉",
+                        "recovery":         "🟢",
+                    }.get(ev["event_type"], "📋")
+                    label = (
+                        f"{icon} {ev['event_type'].replace('_', ' ').title()} · "
+                        f"Cycle {ev['cycle']} · "
+                        f"Relevance: {ev['relevance_score']:.2f}"
+                    )
+                    with st.expander(label, expanded=False):
+                        st.write(ev["description"])
+                        ec1, ec2 = st.columns(2)
+                        ec1.metric("Health Score", f"{ev['health_score_after']:.1f}")
+                        ec2.metric("Risk Tier", ev["risk_tier"])
+            else:
+                st.info(
+                    f"No events found for Engine {drill_unit} — "
+                    "try a different vehicle or refresh the evidence store."
+                )
 
 # ── TAB 2: Predicted vs Actual (Module 2 content) ─────────────────────────────
 with tab2:
@@ -781,7 +877,10 @@ with tab3:
             })
             reasoner_fleet_df = snap
 
-        reasoner = load_reasoner(reasoner_fleet_df, timeline_df)
+        reasoner = load_reasoner(
+            reasoner_fleet_df, timeline_df,
+            _rag_retriever if _evidence_available else None,
+        )
 
         if isinstance(reasoner, Exception):
             st.error(
@@ -867,6 +966,46 @@ with tab3:
             # Recommended action (success box)
             st.success(f"**Recommended Action:** {verdict.recommended_action}", icon="⚡")
 
+            # ── Evidence Trail (Module 4) ─────────────────────────────────────
+            st.divider()
+            st.subheader("🗂️ Evidence Trail")
+            if verdict.evidence_events:
+                st.caption(
+                    f"{len(verdict.evidence_events)} relevant event(s) retrieved "
+                    "from the fleet evidence store."
+                )
+                for ev in verdict.evidence_events:
+                    icon = {
+                        "health_drop":       "⬇️",
+                        "critical_entry":    "🔴",
+                        "sustained_decline": "📉",
+                        "recovery":          "🟢",
+                    }.get(ev["event_type"], "📋")
+                    expander_title = (
+                        f"{icon} {ev['event_type'].replace('_', ' ').title()} · "
+                        f"Engine {ev['unit_id']} · "
+                        f"Cycle {ev['cycle']} · "
+                        f"Relevance: {ev['relevance_score']:.2f}"
+                    )
+                    with st.expander(expander_title, expanded=False):
+                        st.write(ev["description"])
+                        tc1, tc2 = st.columns(2)
+                        tc1.metric("Health Score After", f"{ev['health_score_after']:.1f}")
+                        tc2.metric("Risk Tier", ev["risk_tier"])
+            else:
+                if not _evidence_available:
+                    st.info(
+                        "Evidence store not available — ChromaDB or "
+                        "sentence-transformers may not be installed.",
+                        icon="ℹ️",
+                    )
+                else:
+                    st.info(
+                        "No specific events found for this query — "
+                        "try a more specific question.",
+                        icon="ℹ️",
+                    )
+
     elif submitted and not question_input.strip():
         st.warning("Please enter a question before submitting.", icon="⚠️")
 
@@ -898,6 +1037,7 @@ with tab3:
 # ── Footer ──────────────────────────────────────────────────────────────────────
 st.markdown("---")
 st.caption(
-    "TRACE · Modules 1–3 — Data Foundation · LSTM RUL Prediction · Gemini Fleet Assistant  ·  "
+    "TRACE · Modules 1–4 — Data Foundation · LSTM RUL Prediction · "
+    "Gemini Fleet Assistant · RAG Evidence Layer  ·  "
     "Built on NASA CMAPSS FD001"
 )

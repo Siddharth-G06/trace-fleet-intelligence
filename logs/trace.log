@@ -387,3 +387,115 @@
 2026-08-03 22:23:55 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=trend_analysis  confidence=0.80
 2026-08-03 22:23:55 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=trend_analysis
 2026-08-03 22:23:55 | INFO     | src.reasoning_layer.hypothesis_reasoner | Trend analysis  slope=-0.41482  direction=declining  window=49
+2026-08-07 21:37:43 | INFO     | src.utils.config_loader | Config loaded from 'C:\Users\SIDDHARTH\Documents\Trace\config\config.yaml'
+2026-08-07 21:37:44 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-08-07 21:37:44 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-08-07 21:37:44 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-08-07 21:37:44 | INFO     | src.data_layer.loader | RUL computed — cap=125  RUL range=[0, 125]
+2026-08-07 21:37:44 | INFO     | src.data_layer.health_score | Health scores computed  rows=20631  tier_counts={'HEALTHY': 10631, 'WARNING': 3800, 'WATCH': 3700, 'CRITICAL': 2500}
+2026-08-07 21:39:55 | INFO     | src.evidence_layer.event_logger | Events generated  total=37  by_type={'health_drop': 1, 'critical_entry': 1, 'sustained_decline': 35, 'recovery': 0}
+2026-08-07 21:39:55 | INFO     | src.evidence_layer.event_logger | Events generated  total=43  by_type={'health_drop': 1, 'critical_entry': 1, 'sustained_decline': 41, 'recovery': 0}
+2026-08-07 21:39:56 | INFO     | src.evidence_layer.event_logger | Events generated  total=280  by_type={'health_drop': 0, 'critical_entry': 5, 'sustained_decline': 275, 'recovery': 0}
+2026-08-07 21:39:56 | INFO     | src.evidence_layer.event_logger | Events generated  total=46  by_type={'health_drop': 0, 'critical_entry': 1, 'sustained_decline': 45, 'recovery': 0}
+2026-08-07 21:39:56 | INFO     | src.evidence_layer.event_logger | Events logged to ChromaDB  total=46  by_type={'critical_entry': 1, 'sustained_decline': 45}
+2026-08-07 21:39:56 | INFO     | src.evidence_layer.event_logger | First run — generating and logging fleet events…
+2026-08-07 21:39:56 | INFO     | src.evidence_layer.event_logger | Events generated  total=36  by_type={'health_drop': 0, 'critical_entry': 1, 'sustained_decline': 35, 'recovery': 0}
+2026-08-07 21:39:56 | INFO     | src.evidence_layer.event_logger | Events logged to ChromaDB  total=36  by_type={'critical_entry': 1, 'sustained_decline': 35}
+2026-08-07 21:39:56 | INFO     | src.evidence_layer.event_logger | First run complete — logged 36 events
+2026-08-07 21:39:56 | INFO     | src.evidence_layer.event_logger | Loaded existing 36 events from ChromaDB — skipping re-index
+2026-08-07 21:39:56 | INFO     | src.utils.config_loader | Config loaded from 'C:\Users\SIDDHARTH\Documents\Trace\config\config.yaml'
+2026-08-07 21:39:56 | INFO     | src.evidence_layer.rag_retriever | RAGRetriever ready  collection=trace_fleet_events  events=0  top_k=5  relevance_threshold=0.00
+2026-08-07 21:39:56 | INFO     | src.evidence_layer.rag_retriever | Retrieved 2 events (above threshold=0.00)  query_type={'unit_id': {'$eq': 5}}
+2026-08-07 21:39:56 | INFO     | src.evidence_layer.rag_retriever | RAGRetriever ready  collection=trace_fleet_events  events=0  top_k=5  relevance_threshold=0.00
+2026-08-07 21:39:56 | INFO     | src.evidence_layer.rag_retriever | Retrieved 0 events (above threshold=999.00)  query_type={'unit_id': {'$eq': 5}}
+2026-08-07 21:40:49 | INFO     | src.utils.config_loader | Config loaded from 'C:\Users\SIDDHARTH\Documents\Trace\config\config.yaml'
+2026-08-07 21:40:49 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-08-07 21:40:49 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-08-07 21:40:49 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-08-07 21:40:49 | INFO     | src.data_layer.loader | RUL computed — cap=125  RUL range=[0, 125]
+2026-08-07 21:40:49 | INFO     | src.data_layer.health_score | Health scores computed  rows=20631  tier_counts={'HEALTHY': 10631, 'WARNING': 3800, 'WATCH': 3700, 'CRITICAL': 2500}
+2026-08-07 21:41:26 | INFO     | __main__ | EventLogger ready  collection=trace_fleet_events  model=all-MiniLM-L6-v2  existing_events=0
+2026-08-07 21:41:26 | INFO     | __main__ | First run — generating and logging fleet events…
+2026-08-07 21:41:33 | INFO     | __main__ | Events generated  total=11700  by_type={'health_drop': 0, 'critical_entry': 100, 'sustained_decline': 11600, 'recovery': 0}
+2026-08-07 21:42:21 | INFO     | src.utils.config_loader | Config loaded from 'C:\Users\SIDDHARTH\Documents\Trace\config\config.yaml'
+2026-08-07 21:42:22 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-08-07 21:42:23 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-08-07 21:42:23 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-08-07 21:42:23 | INFO     | src.data_layer.loader | RUL computed — cap=125  RUL range=[0, 125]
+2026-08-07 21:42:23 | INFO     | src.data_layer.health_score | Health scores computed  rows=20631  tier_counts={'HEALTHY': 10631, 'WARNING': 3800, 'WATCH': 3700, 'CRITICAL': 2500}
+2026-08-07 21:42:23 | INFO     | src.data_layer.health_score | Fleet snapshot ready  units=100  critical=0  warning=27  watch=32  healthy=41
+2026-08-07 21:42:26 | INFO     | src.ml_layer.lstm_predictor | Trainer initialised  device=cpu
+2026-08-07 21:42:26 | INFO     | src.ml_layer.lstm_predictor | LSTMPredictor built  n_features=17  h1=64  h2=32  dense_units=16  dropout=0.20
+2026-08-07 21:42:28 | INFO     | src.ml_layer.lstm_predictor | Model loaded from 'models/lstm_model.pth'  (eval mode)
+2026-08-07 21:42:28 | INFO     | src.ml_layer.lstm_predictor | Predictor ready  rul_cap=125
+2026-08-07 21:42:29 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-08-07 21:42:29 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-08-07 21:42:29 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-08-07 21:42:29 | INFO     | src.data_layer.loader | Dropped sensors ['s1', 's5', 's6', 's10', 's16', 's18', 's19']  remaining columns=20
+2026-08-07 21:42:29 | INFO     | src.ml_layer.lstm_predictor | Sequences built  X.shape=(10196, 30, 17)  y.shape=(10196,)  window_size=30  units=100
+2026-08-07 21:42:34 | INFO     | src.ml_layer.lstm_predictor | Fleet predictions complete  units=100  mean_rul=76.5  mean_health=61.2
+2026-08-07 21:42:38 | INFO     | __main__ | Events logged to ChromaDB  total=11700  by_type={'critical_entry': 100, 'sustained_decline': 11600}
+2026-08-07 21:42:38 | INFO     | __main__ | First run complete — logged 11700 events
+2026-08-07 21:43:01 | INFO     | src.evidence_layer.event_logger | EventLogger ready  collection=trace_fleet_events  model=all-MiniLM-L6-v2  existing_events=11700
+2026-08-07 21:43:01 | INFO     | src.evidence_layer.event_logger | Loaded existing 11700 events from ChromaDB — skipping re-index
+2026-08-07 21:43:01 | INFO     | src.evidence_layer.rag_retriever | RAGRetriever ready  collection=trace_fleet_events  events=11700  top_k=5  relevance_threshold=0.50
+2026-08-07 21:43:02 | INFO     | src.evidence_layer.rag_retriever | Retrieved 8 events (above threshold=0.50)  query_type={'unit_id': {'$eq': 1}}
+2026-08-07 21:43:38 | INFO     | src.evidence_layer.rag_retriever | Retrieved 8 events (above threshold=0.50)  query_type={'unit_id': {'$eq': 1}}
+2026-08-07 21:43:39 | INFO     | src.evidence_layer.rag_retriever | Retrieved 8 events (above threshold=0.50)  query_type={'unit_id': {'$eq': 1}}
+2026-08-07 21:46:54 | INFO     | src.utils.config_loader | Config loaded from 'C:\Users\SIDDHARTH\Documents\Trace\config\config.yaml'
+2026-08-07 21:46:55 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-08-07 21:46:55 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-08-07 21:46:55 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-08-07 21:46:55 | INFO     | src.data_layer.loader | RUL computed — cap=125  RUL range=[0, 125]
+2026-08-07 21:46:55 | INFO     | src.data_layer.health_score | Health scores computed  rows=20631  tier_counts={'HEALTHY': 10631, 'WARNING': 3800, 'WATCH': 3700, 'CRITICAL': 2500}
+2026-08-07 21:46:55 | INFO     | src.data_layer.health_score | Fleet snapshot ready  units=100  critical=0  warning=27  watch=32  healthy=41
+2026-08-07 21:46:57 | INFO     | src.ml_layer.lstm_predictor | Trainer initialised  device=cpu
+2026-08-07 21:46:57 | INFO     | src.ml_layer.lstm_predictor | LSTMPredictor built  n_features=17  h1=64  h2=32  dense_units=16  dropout=0.20
+2026-08-07 21:46:59 | INFO     | src.ml_layer.lstm_predictor | Model loaded from 'models/lstm_model.pth'  (eval mode)
+2026-08-07 21:46:59 | INFO     | src.ml_layer.lstm_predictor | Predictor ready  rul_cap=125
+2026-08-07 21:46:59 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-08-07 21:46:59 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-08-07 21:46:59 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-08-07 21:46:59 | INFO     | src.data_layer.loader | Dropped sensors ['s1', 's5', 's6', 's10', 's16', 's18', 's19']  remaining columns=20
+2026-08-07 21:47:00 | INFO     | src.ml_layer.lstm_predictor | Sequences built  X.shape=(10196, 30, 17)  y.shape=(10196,)  window_size=30  units=100
+2026-08-07 21:47:02 | INFO     | src.ml_layer.lstm_predictor | Fleet predictions complete  units=100  mean_rul=76.5  mean_health=61.2
+2026-08-07 21:47:23 | INFO     | src.evidence_layer.event_logger | EventLogger ready  collection=trace_fleet_events  model=all-MiniLM-L6-v2  existing_events=11700
+2026-08-07 21:47:23 | INFO     | src.evidence_layer.event_logger | Loaded existing 11700 events from ChromaDB — skipping re-index
+2026-08-07 21:47:23 | INFO     | src.evidence_layer.rag_retriever | RAGRetriever ready  collection=trace_fleet_events  events=11700  top_k=5  relevance_threshold=0.50
+2026-08-07 21:47:24 | INFO     | src.evidence_layer.rag_retriever | Retrieved 8 events (above threshold=0.50)  query_type={'unit_id': {'$eq': 1}}
+2026-08-07 21:47:36 | INFO     | src.evidence_layer.rag_retriever | Retrieved 8 events (above threshold=0.50)  query_type={'unit_id': {'$eq': 1}}
+2026-08-07 21:47:37 | INFO     | src.evidence_layer.rag_retriever | Retrieved 8 events (above threshold=0.50)  query_type={'unit_id': {'$eq': 1}}
+2026-08-07 21:47:37 | WARNING  | src.reasoning_layer.hypothesis_reasoner | google-generativeai not installed — Gemini disabled.
+2026-08-07 21:47:37 | INFO     | src.reasoning_layer.hypothesis_reasoner | HypothesisReasoner initialised  fleet_units=100  timeline=yes  gemini_available=False  rag_retriever=yes
+2026-08-07 21:47:37 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Which vehicles are at highest risk right now'
+2026-08-07 21:47:37 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=ranking_query  confidence=0.80
+2026-08-07 21:47:37 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=ranking_query
+2026-08-07 21:47:37 | INFO     | src.reasoning_layer.hypothesis_reasoner | Ranking query  top_n=5  worst={'unit_id': 'Engine 34', 'health_score': 4.1, 'risk_tier': 'CRITICAL', 'predicted_rul': 5.1}
+2026-08-07 21:47:37 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type={'unit_id': {'$in': [34, 76, 68, 81, 31]}}
+2026-08-07 21:47:37 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-07 21:47:52 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-08-07 21:47:52 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-08-07 21:47:52 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-08-07 21:47:52 | INFO     | src.data_layer.loader | RUL computed — cap=125  RUL range=[0, 125]
+2026-08-07 21:47:52 | INFO     | src.data_layer.health_score | Health scores computed  rows=20631  tier_counts={'HEALTHY': 10631, 'WARNING': 3800, 'WATCH': 3700, 'CRITICAL': 2500}
+2026-08-07 21:47:53 | INFO     | src.data_layer.health_score | Fleet snapshot ready  units=100  critical=0  warning=27  watch=32  healthy=41
+2026-08-07 21:47:53 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-08-07 21:47:53 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-08-07 21:47:53 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-08-07 21:47:53 | INFO     | src.data_layer.loader | Dropped sensors ['s1', 's5', 's6', 's10', 's16', 's18', 's19']  remaining columns=20
+2026-08-07 21:47:53 | INFO     | src.ml_layer.lstm_predictor | Sequences built  X.shape=(10196, 30, 17)  y.shape=(10196,)  window_size=30  units=100
+2026-08-07 21:47:57 | INFO     | src.ml_layer.lstm_predictor | Fleet predictions complete  units=100  mean_rul=76.5  mean_health=61.2
+2026-08-07 21:47:57 | INFO     | src.evidence_layer.rag_retriever | Retrieved 8 events (above threshold=0.50)  query_type={'unit_id': {'$eq': 1}}
+2026-08-07 21:48:09 | INFO     | src.evidence_layer.event_logger | EventLogger ready  collection=trace_fleet_events  model=all-MiniLM-L6-v2  existing_events=11700
+2026-08-07 21:48:09 | INFO     | src.evidence_layer.event_logger | Loaded existing 11700 events from ChromaDB — skipping re-index
+2026-08-07 21:48:09 | INFO     | src.evidence_layer.rag_retriever | RAGRetriever ready  collection=trace_fleet_events  events=11700  top_k=5  relevance_threshold=0.50
+2026-08-07 21:48:09 | INFO     | src.evidence_layer.rag_retriever | Retrieved 8 events (above threshold=0.50)  query_type={'unit_id': {'$eq': 1}}
+2026-08-07 21:48:13 | INFO     | src.evidence_layer.rag_retriever | Retrieved 8 events (above threshold=0.50)  query_type={'unit_id': {'$eq': 1}}
+2026-08-07 21:48:13 | WARNING  | src.reasoning_layer.hypothesis_reasoner | google-generativeai not installed — Gemini disabled.
+2026-08-07 21:48:13 | INFO     | src.reasoning_layer.hypothesis_reasoner | HypothesisReasoner initialised  fleet_units=100  timeline=yes  gemini_available=False  rag_retriever=yes
+2026-08-07 21:48:13 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Which vehicles are at highest risk right now'
+2026-08-07 21:48:13 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=ranking_query  confidence=0.80
+2026-08-07 21:48:13 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=ranking_query
+2026-08-07 21:48:13 | INFO     | src.reasoning_layer.hypothesis_reasoner | Ranking query  top_n=5  worst={'unit_id': 'Engine 34', 'health_score': 4.1, 'risk_tier': 'CRITICAL', 'predicted_rul': 5.1}
+2026-08-07 21:48:13 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type={'unit_id': {'$in': [34, 76, 68, 81, 31]}}
+2026-08-07 21:48:13 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5

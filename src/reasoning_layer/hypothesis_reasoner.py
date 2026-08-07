@@ -112,6 +112,7 @@ class VerdictResult:
     recommended_action: str
     computed_at: datetime
     used_gemini: bool = field(default=False)
+    evidence_events: list[dict[str, Any]] = field(default_factory=list)
 
 
 # ── HypothesisReasoner ────────────────────────────────────────────────────────
@@ -147,6 +148,7 @@ class HypothesisReasoner:
         config: dict[str, Any],
         fleet_data: pd.DataFrame,
         health_timeline_df: pd.DataFrame | None = None,
+        rag_retriever: Any = None,
     ) -> None:
         self._cfg = config
         self._gcfg = config.get("gemini", {})
@@ -155,6 +157,7 @@ class HypothesisReasoner:
         self._timeline_df = (
             health_timeline_df.copy() if health_timeline_df is not None else None
         )
+        self._rag_retriever = rag_retriever
 
         # ── Gemini client ─────────────────────────────────────────────────────
         self._gemini_model: Any = None
@@ -163,10 +166,11 @@ class HypothesisReasoner:
 
         logger.info(
             "HypothesisReasoner initialised  fleet_units=%d  timeline=%s  "
-            "gemini_available=%s",
+            "gemini_available=%s  rag_retriever=%s",
             len(self._fleet_data),
             "yes" if self._timeline_df is not None else "no",
             self._gemini_available,
+            "yes" if self._rag_retriever is not None else "no",
         )
 
     # ── Gemini initialisation ─────────────────────────────────────────────────
@@ -256,7 +260,7 @@ class HypothesisReasoner:
                 if not isinstance(v, (list, pd.DataFrame))
             }
 
-            return VerdictResult(
+            verdict = VerdictResult(
                 original_question=question,
                 query_type=parsed["query_type"],
                 confirmed=confirmed,
@@ -268,6 +272,18 @@ class HypothesisReasoner:
                 computed_at=datetime.now(timezone.utc),
                 used_gemini=self._gemini_available,
             )
+
+            # ── Evidence retrieval (Module 4) ─────────────────────────────────
+            if self._rag_retriever is not None:
+                try:
+                    verdict.evidence_events = self._rag_retriever.retrieve(verdict)
+                    logger.info(
+                        "Evidence retrieved  n_events=%d", len(verdict.evidence_events)
+                    )
+                except Exception as ev_exc:  # noqa: BLE001
+                    logger.warning("RAG retrieval failed: %s", ev_exc)
+
+            return verdict
 
         except Exception as exc:  # noqa: BLE001
             logger.error("analyze() failed: %s", exc, exc_info=True)
@@ -283,6 +299,7 @@ class HypothesisReasoner:
                 computed_at=datetime.now(timezone.utc),
                 used_gemini=False,
             )
+
 
     # ── Step 1: Parse ─────────────────────────────────────────────────────────
 
