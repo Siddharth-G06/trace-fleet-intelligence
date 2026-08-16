@@ -499,3 +499,649 @@
 2026-08-07 21:48:13 | INFO     | src.reasoning_layer.hypothesis_reasoner | Ranking query  top_n=5  worst={'unit_id': 'Engine 34', 'health_score': 4.1, 'risk_tier': 'CRITICAL', 'predicted_rul': 5.1}
 2026-08-07 21:48:13 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type={'unit_id': {'$in': [34, 76, 68, 81, 31]}}
 2026-08-07 21:48:13 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:18:01 | INFO     | src.utils.config_loader | Config loaded from 'C:\Users\SIDDHARTH\Documents\Trace\config\config.yaml'
+2026-08-16 18:18:11 | INFO     | src.data_layer.loader | === TRACE Data Pipeline START ===
+2026-08-16 18:18:12 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-08-16 18:18:12 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-08-16 18:18:12 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-08-16 18:18:12 | INFO     | src.data_layer.loader | RUL computed — cap=125  RUL range=[0, 125]
+2026-08-16 18:18:12 | INFO     | src.data_layer.loader | Dropped sensors ['s1', 's5', 's6', 's10', 's16', 's18', 's19']  remaining columns=20
+2026-08-16 18:18:12 | INFO     | src.data_layer.loader | Dropped sensors ['s1', 's5', 's6', 's10', 's16', 's18', 's19']  remaining columns=20
+2026-08-16 18:18:12 | INFO     | src.data_layer.loader | Feature names (17): ['op_setting_1', 'op_setting_2', 'op_setting_3', 's2', 's3', 's4', 's7', 's8', 's9', 's11', 's12', 's13', 's14', 's15', 's17', 's20', 's21']
+2026-08-16 18:18:12 | INFO     | src.data_layer.loader | Sequences built  X.shape=(17731, 30, 17)  y.shape=(17731,)  window_size=30
+2026-08-16 18:18:12 | INFO     | src.data_layer.loader | Sequences built  X.shape=(10196, 30, 17)  y.shape=(10196,)  window_size=30
+2026-08-16 18:18:13 | INFO     | src.data_layer.loader | Scaler saved to 'models/scaler.pkl'
+2026-08-16 18:18:13 | INFO     | src.data_layer.loader | === TRACE Data Pipeline COMPLETE ===
+2026-08-16 18:18:13 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-08-16 18:18:13 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-08-16 18:18:13 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-08-16 18:18:13 | INFO     | src.data_layer.loader | RUL computed — cap=125  RUL range=[0, 125]
+2026-08-16 18:18:13 | INFO     | src.data_layer.health_score | Health scores computed  rows=20631  tier_counts={'HEALTHY': 10631, 'WARNING': 3800, 'WATCH': 3700, 'CRITICAL': 2500}
+2026-08-16 18:18:13 | INFO     | src.data_layer.health_score | Fleet snapshot ready  units=100  critical=0  warning=27  watch=32  healthy=41
+2026-08-16 18:18:23 | INFO     | src.ml_layer.lstm_predictor | Trainer initialised  device=cpu
+2026-08-16 18:18:23 | INFO     | src.ml_layer.lstm_predictor | LSTMPredictor built  n_features=17  h1=64  h2=32  dense_units=16  dropout=0.20
+2026-08-16 18:18:27 | INFO     | src.ml_layer.lstm_predictor | Model loaded from 'models/lstm_model.pth'  (eval mode)
+2026-08-16 18:18:27 | INFO     | src.ml_layer.lstm_predictor | Predictor ready  rul_cap=125
+2026-08-16 18:18:27 | INFO     | src.ml_layer.lstm_predictor | Trainer initialised  device=cpu
+2026-08-16 18:18:27 | INFO     | src.ml_layer.lstm_predictor | LSTMPredictor built  n_features=17  h1=64  h2=32  dense_units=16  dropout=0.20
+2026-08-16 18:18:27 | INFO     | src.ml_layer.lstm_predictor | Model loaded from 'models/lstm_model.pth'  (eval mode)
+2026-08-16 18:18:27 | INFO     | src.ml_layer.lstm_predictor | Predictor ready  rul_cap=125
+2026-08-16 18:18:27 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-08-16 18:18:27 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-08-16 18:18:27 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-08-16 18:18:27 | INFO     | src.data_layer.loader | Dropped sensors ['s1', 's5', 's6', 's10', 's16', 's18', 's19']  remaining columns=20
+2026-08-16 18:18:27 | INFO     | src.ml_layer.lstm_predictor | Sequences built  X.shape=(10196, 30, 17)  y.shape=(10196,)  window_size=30  units=100
+2026-08-16 18:18:31 | INFO     | src.ml_layer.lstm_predictor | Fleet predictions complete  units=100  mean_rul=76.5  mean_health=61.2
+2026-08-16 18:20:08 | INFO     | src.evidence_layer.event_logger | EventLogger ready  collection=trace_fleet_events  model=all-MiniLM-L6-v2  existing_events=11700
+2026-08-16 18:20:08 | INFO     | src.evidence_layer.event_logger | Loaded existing 11700 events from ChromaDB — skipping re-index
+2026-08-16 18:20:10 | INFO     | src.evidence_layer.rag_retriever | RAGRetriever ready  collection=trace_fleet_events  events=11700  top_k=5  relevance_threshold=0.50
+2026-08-16 18:20:10 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type={'unit_id': {'$eq': 1}}
+2026-08-16 18:20:10 | WARNING  | src.reasoning_layer.hypothesis_reasoner | google-generativeai not installed — Gemini disabled.
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | HypothesisReasoner initialised  fleet_units=100  timeline=yes  gemini_available=False  rag_retriever=yes
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Which vehicles will need maintenance in the next 30 cycles?'
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=threshold_query  confidence=0.85
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=threshold_query
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Threshold query  threshold=30  count=21  most_critical=Engine 34
+2026-08-16 18:20:10 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type={'unit_id': {'$in': [34, 76, 68, 81, 31, 82, 35, 42, 20, 49, 66, 56, 100, 61, 24, 64, 92, 36, 90, 91, 77]}}
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Show me the 5 most at-risk vehicles right now'
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=ranking_query  confidence=0.80
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=ranking_query
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Ranking query  top_n=5  worst={'unit_id': 'Engine 34', 'health_score': 4.1, 'risk_tier': 'CRITICAL', 'predicted_rul': 5.1}
+2026-08-16 18:20:10 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type={'unit_id': {'$in': [34, 76, 68, 81, 31]}}
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Are Group A vehicles degrading faster than Group B?'
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=fleet_comparison  confidence=0.78
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=fleet_comparison
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Fleet comparison  ga_rate=0.8000  gb_rate=0.8000  faster=Group B
+2026-08-16 18:20:10 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type=None
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Which vehicles show unusual health patterns?'
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=anomaly_hunt  confidence=0.75
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=anomaly_hunt
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Anomaly hunt  fleet_mean_var=1080.178  fleet_std_var=60.138  anomalous=0
+2026-08-16 18:20:10 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type=None
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Is fleet health improving or declining over the last 50 cycles?'
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=threshold_query  confidence=0.85
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=threshold_query
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Threshold query  threshold=50  count=31  most_critical=Engine 34
+2026-08-16 18:20:10 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type={'unit_id': {'$in': [34, 76, 68, 81, 31, 82, 35, 42, 20, 49, 66, 56, 100, 61, 24, 64, 92, 36, 90, 91, 77, 41, 40, 53, 52, 37, 18, 46, 58, 62, 93]}}
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Which vehicles will need maintenance in the next 30 cycles?'
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=threshold_query  confidence=0.85
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=threshold_query
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Threshold query  threshold=30  count=21  most_critical=Engine 34
+2026-08-16 18:20:10 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type={'unit_id': {'$in': [34, 76, 68, 81, 31, 82, 35, 42, 20, 49, 66, 56, 100, 61, 24, 64, 92, 36, 90, 91, 77]}}
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Show me the 5 most at-risk vehicles right now'
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=ranking_query  confidence=0.80
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=ranking_query
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Ranking query  top_n=5  worst={'unit_id': 'Engine 34', 'health_score': 4.1, 'risk_tier': 'CRITICAL', 'predicted_rul': 5.1}
+2026-08-16 18:20:10 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type={'unit_id': {'$in': [34, 76, 68, 81, 31]}}
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Are Group A vehicles degrading faster than Group B?'
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=fleet_comparison  confidence=0.78
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=fleet_comparison
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Fleet comparison  ga_rate=0.8000  gb_rate=0.8000  faster=Group B
+2026-08-16 18:20:10 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type=None
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Which vehicles show unusual health patterns?'
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=anomaly_hunt  confidence=0.75
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=anomaly_hunt
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Anomaly hunt  fleet_mean_var=1080.178  fleet_std_var=60.138  anomalous=0
+2026-08-16 18:20:10 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type=None
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Is fleet health improving or declining over the last 50 cycles?'
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=threshold_query  confidence=0.85
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=threshold_query
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Threshold query  threshold=50  count=31  most_critical=Engine 34
+2026-08-16 18:20:10 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type={'unit_id': {'$in': [34, 76, 68, 81, 31, 82, 35, 42, 20, 49, 66, 56, 100, 61, 24, 64, 92, 36, 90, 91, 77, 41, 40, 53, 52, 37, 18, 46, 58, 62, 93]}}
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Which vehicles will need maintenance in the next 30 cycles?'
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=threshold_query  confidence=0.85
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=threshold_query
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Threshold query  threshold=30  count=21  most_critical=Engine 34
+2026-08-16 18:20:10 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type={'unit_id': {'$in': [34, 76, 68, 81, 31, 82, 35, 42, 20, 49, 66, 56, 100, 61, 24, 64, 92, 36, 90, 91, 77]}}
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Show me the 5 most at-risk vehicles right now'
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=ranking_query  confidence=0.80
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=ranking_query
+2026-08-16 18:20:10 | INFO     | src.reasoning_layer.hypothesis_reasoner | Ranking query  top_n=5  worst={'unit_id': 'Engine 34', 'health_score': 4.1, 'risk_tier': 'CRITICAL', 'predicted_rul': 5.1}
+2026-08-16 18:20:11 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type={'unit_id': {'$in': [34, 76, 68, 81, 31]}}
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Are Group A vehicles degrading faster than Group B?'
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=fleet_comparison  confidence=0.78
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=fleet_comparison
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Fleet comparison  ga_rate=0.8000  gb_rate=0.8000  faster=Group B
+2026-08-16 18:20:11 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type=None
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Which vehicles show unusual health patterns?'
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=anomaly_hunt  confidence=0.75
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=anomaly_hunt
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Anomaly hunt  fleet_mean_var=1080.178  fleet_std_var=60.138  anomalous=0
+2026-08-16 18:20:11 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type=None
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Is fleet health improving or declining over the last 50 cycles?'
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=threshold_query  confidence=0.85
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=threshold_query
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Threshold query  threshold=50  count=31  most_critical=Engine 34
+2026-08-16 18:20:11 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type={'unit_id': {'$in': [34, 76, 68, 81, 31, 82, 35, 42, 20, 49, 66, 56, 100, 61, 24, 64, 92, 36, 90, 91, 77, 41, 40, 53, 52, 37, 18, 46, 58, 62, 93]}}
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Which vehicles will need maintenance in the next 30 cycles?'
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=threshold_query  confidence=0.85
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=threshold_query
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Threshold query  threshold=30  count=21  most_critical=Engine 34
+2026-08-16 18:20:11 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type={'unit_id': {'$in': [34, 76, 68, 81, 31, 82, 35, 42, 20, 49, 66, 56, 100, 61, 24, 64, 92, 36, 90, 91, 77]}}
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Show me the 5 most at-risk vehicles right now'
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=ranking_query  confidence=0.80
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=ranking_query
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Ranking query  top_n=5  worst={'unit_id': 'Engine 34', 'health_score': 4.1, 'risk_tier': 'CRITICAL', 'predicted_rul': 5.1}
+2026-08-16 18:20:11 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type={'unit_id': {'$in': [34, 76, 68, 81, 31]}}
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Are Group A vehicles degrading faster than Group B?'
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=fleet_comparison  confidence=0.78
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=fleet_comparison
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Fleet comparison  ga_rate=0.8000  gb_rate=0.8000  faster=Group B
+2026-08-16 18:20:11 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type=None
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Which vehicles show unusual health patterns?'
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=anomaly_hunt  confidence=0.75
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=anomaly_hunt
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Anomaly hunt  fleet_mean_var=1080.178  fleet_std_var=60.138  anomalous=0
+2026-08-16 18:20:11 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type=None
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Is fleet health improving or declining over the last 50 cycles?'
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=threshold_query  confidence=0.85
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=threshold_query
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Threshold query  threshold=50  count=31  most_critical=Engine 34
+2026-08-16 18:20:11 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type={'unit_id': {'$in': [34, 76, 68, 81, 31, 82, 35, 42, 20, 49, 66, 56, 100, 61, 24, 64, 92, 36, 90, 91, 77, 41, 40, 53, 52, 37, 18, 46, 58, 62, 93]}}
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Which vehicles will need maintenance in the next 30 cycles?'
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=threshold_query  confidence=0.85
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=threshold_query
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Threshold query  threshold=30  count=21  most_critical=Engine 34
+2026-08-16 18:20:11 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type={'unit_id': {'$in': [34, 76, 68, 81, 31, 82, 35, 42, 20, 49, 66, 56, 100, 61, 24, 64, 92, 36, 90, 91, 77]}}
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Show me the 5 most at-risk vehicles right now'
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=ranking_query  confidence=0.80
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=ranking_query
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Ranking query  top_n=5  worst={'unit_id': 'Engine 34', 'health_score': 4.1, 'risk_tier': 'CRITICAL', 'predicted_rul': 5.1}
+2026-08-16 18:20:11 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type={'unit_id': {'$in': [34, 76, 68, 81, 31]}}
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Are Group A vehicles degrading faster than Group B?'
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=fleet_comparison  confidence=0.78
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=fleet_comparison
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Fleet comparison  ga_rate=0.8000  gb_rate=0.8000  faster=Group B
+2026-08-16 18:20:11 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type=None
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Which vehicles show unusual health patterns?'
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=anomaly_hunt  confidence=0.75
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=anomaly_hunt
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Anomaly hunt  fleet_mean_var=1080.178  fleet_std_var=60.138  anomalous=0
+2026-08-16 18:20:11 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type=None
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Is fleet health improving or declining over the last 50 cycles?'
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=threshold_query  confidence=0.85
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=threshold_query
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Threshold query  threshold=50  count=31  most_critical=Engine 34
+2026-08-16 18:20:11 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type={'unit_id': {'$in': [34, 76, 68, 81, 31, 82, 35, 42, 20, 49, 66, 56, 100, 61, 24, 64, 92, 36, 90, 91, 77, 41, 40, 53, 52, 37, 18, 46, 58, 62, 93]}}
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='xyzzy frobble wibble 42 blorp'
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=unknown  confidence=0.30
+2026-08-16 18:20:11 | WARNING  | src.reasoning_layer.hypothesis_reasoner | No analysis handler for query_type='unknown'
+2026-08-16 18:20:11 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type=None
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Which vehicles will need maintenance in the next 125 cycles?'
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=threshold_query  confidence=0.85
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=threshold_query
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Threshold query  threshold=125  count=100  most_critical=Engine 34
+2026-08-16 18:20:11 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type={'unit_id': {'$in': [34, 76, 68, 81, 31, 82, 35, 42, 20, 49, 66, 56, 100, 61, 24, 64, 92, 36, 90, 91, 77, 41, 40, 53, 52, 37, 18, 46, 58, 62, 93, 38, 3, 32, 17, 72, 94, 43, 21, 98, 84, 97, 45, 13, 4, 10, 63, 19, 70, 50, 27, 16, 11, 8, 44, 75, 12, 7, 79, 29, 80, 95, 5, 15, 71, 48, 96, 73, 25, 57, 51, 74, 26, 30, 28, 59, 55, 33, 1, 6, 60, 47, 89, 14, 67, 88, 69, 99, 86, 54, 87, 23, 9, 22, 83, 2, 65, 39, 85, 78]}}
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Show me the 5 most at-risk vehicles right now'
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=ranking_query  confidence=0.80
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=ranking_query
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Ranking query  top_n=5  worst={'unit_id': 'Engine 34', 'health_score': 4.1, 'risk_tier': 'CRITICAL', 'predicted_rul': 5.1}
+2026-08-16 18:20:11 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type={'unit_id': {'$in': [34, 76, 68, 81, 31]}}
+2026-08-16 18:20:11 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:21:06 | INFO     | src.utils.config_loader | Config loaded from 'C:\Users\SIDDHARTH\Documents\Trace\config\config.yaml'
+2026-08-16 18:21:10 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-08-16 18:21:10 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-08-16 18:21:10 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-08-16 18:21:10 | INFO     | src.data_layer.loader | RUL computed — cap=125  RUL range=[0, 125]
+2026-08-16 18:21:10 | INFO     | src.data_layer.health_score | Health scores computed  rows=20631  tier_counts={'HEALTHY': 10631, 'WARNING': 3800, 'WATCH': 3700, 'CRITICAL': 2500}
+2026-08-16 18:21:29 | INFO     | src.utils.config_loader | Config loaded from 'C:\Users\SIDDHARTH\Documents\Trace\config\config.yaml'
+2026-08-16 18:21:35 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-08-16 18:21:35 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-08-16 18:21:35 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-08-16 18:21:35 | INFO     | src.data_layer.loader | RUL computed — cap=125  RUL range=[0, 125]
+2026-08-16 18:21:35 | INFO     | src.data_layer.health_score | Health scores computed  rows=20631  tier_counts={'HEALTHY': 10631, 'WARNING': 3800, 'WATCH': 3700, 'CRITICAL': 2500}
+2026-08-16 18:21:48 | INFO     | src.evidence_layer.event_logger | EventLogger ready  collection=trace_fleet_events  model=all-MiniLM-L6-v2  existing_events=11700
+2026-08-16 18:21:48 | INFO     | src.evidence_layer.event_logger | Loaded existing 11700 events from ChromaDB — skipping re-index
+2026-08-16 18:21:49 | INFO     | src.ml_layer.lstm_predictor | Trainer initialised  device=cpu
+2026-08-16 18:21:49 | INFO     | src.ml_layer.lstm_predictor | LSTMPredictor built  n_features=17  h1=64  h2=32  dense_units=16  dropout=0.20
+2026-08-16 18:21:49 | INFO     | src.ml_layer.lstm_predictor | Model loaded from 'models/lstm_model.pth'  (eval mode)
+2026-08-16 18:21:49 | INFO     | src.ml_layer.lstm_predictor | Predictor ready  rul_cap=125
+2026-08-16 18:21:50 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-08-16 18:21:50 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-08-16 18:21:50 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-08-16 18:21:50 | INFO     | src.data_layer.loader | Dropped sensors ['s1', 's5', 's6', 's10', 's16', 's18', 's19']  remaining columns=20
+2026-08-16 18:21:50 | INFO     | src.ml_layer.lstm_predictor | Sequences built  X.shape=(10196, 30, 17)  y.shape=(10196,)  window_size=30  units=100
+2026-08-16 18:21:55 | INFO     | src.ml_layer.lstm_predictor | Fleet predictions complete  units=100  mean_rul=76.5  mean_health=61.2
+2026-08-16 18:21:55 | INFO     | src.evidence_layer.rag_retriever | RAGRetriever ready  collection=trace_fleet_events  events=11700  top_k=5  relevance_threshold=0.50
+2026-08-16 18:21:55 | WARNING  | src.reasoning_layer.hypothesis_reasoner | google-generativeai not installed — Gemini disabled.
+2026-08-16 18:21:55 | INFO     | src.reasoning_layer.hypothesis_reasoner | HypothesisReasoner initialised  fleet_units=100  timeline=yes  gemini_available=False  rag_retriever=yes
+2026-08-16 18:21:55 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Which vehicles will need maintenance in the next 30 cycles?'
+2026-08-16 18:21:55 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=threshold_query  confidence=0.85
+2026-08-16 18:21:55 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=threshold_query
+2026-08-16 18:21:55 | INFO     | src.reasoning_layer.hypothesis_reasoner | Threshold query  threshold=30  count=21  most_critical=Engine 34
+2026-08-16 18:21:55 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type={'unit_id': {'$in': [34, 76, 68, 81, 31, 82, 35, 42, 20, 49, 66, 56, 100, 61, 24, 64, 92, 36, 90, 91, 77]}}
+2026-08-16 18:21:55 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:21:55 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Show me the 5 most at-risk vehicles right now'
+2026-08-16 18:21:55 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=ranking_query  confidence=0.80
+2026-08-16 18:21:55 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=ranking_query
+2026-08-16 18:21:55 | INFO     | src.reasoning_layer.hypothesis_reasoner | Ranking query  top_n=5  worst={'unit_id': 'Engine 34', 'health_score': 4.1, 'risk_tier': 'CRITICAL', 'predicted_rul': 5.1}
+2026-08-16 18:21:55 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type={'unit_id': {'$in': [34, 76, 68, 81, 31]}}
+2026-08-16 18:21:55 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:21:55 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Are Group A vehicles degrading faster than Group B?'
+2026-08-16 18:21:55 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=fleet_comparison  confidence=0.78
+2026-08-16 18:21:55 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=fleet_comparison
+2026-08-16 18:21:55 | INFO     | src.reasoning_layer.hypothesis_reasoner | Fleet comparison  ga_rate=0.8000  gb_rate=0.8000  faster=Group B
+2026-08-16 18:21:55 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type=None
+2026-08-16 18:21:55 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:21:55 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Which vehicles show unusual health patterns?'
+2026-08-16 18:21:55 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=anomaly_hunt  confidence=0.75
+2026-08-16 18:21:55 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=anomaly_hunt
+2026-08-16 18:21:55 | INFO     | src.reasoning_layer.hypothesis_reasoner | Anomaly hunt  fleet_mean_var=1080.178  fleet_std_var=60.138  anomalous=0
+2026-08-16 18:21:55 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type=None
+2026-08-16 18:21:55 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:21:55 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Is fleet health improving or declining over the last 50 cycles?'
+2026-08-16 18:21:55 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=threshold_query  confidence=0.85
+2026-08-16 18:21:55 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=threshold_query
+2026-08-16 18:21:55 | INFO     | src.reasoning_layer.hypothesis_reasoner | Threshold query  threshold=50  count=31  most_critical=Engine 34
+2026-08-16 18:21:55 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type={'unit_id': {'$in': [34, 76, 68, 81, 31, 82, 35, 42, 20, 49, 66, 56, 100, 61, 24, 64, 92, 36, 90, 91, 77, 41, 40, 53, 52, 37, 18, 46, 58, 62, 93]}}
+2026-08-16 18:21:55 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:22:22 | INFO     | src.evidence_layer.event_logger | EventLogger ready  collection=trace_fleet_events  model=all-MiniLM-L6-v2  existing_events=11700
+2026-08-16 18:22:22 | INFO     | src.evidence_layer.event_logger | Loaded existing 11700 events from ChromaDB — skipping re-index
+2026-08-16 18:25:19 | INFO     | src.utils.config_loader | Config loaded from 'C:\Users\SIDDHARTH\Documents\Trace\config\config.yaml'
+2026-08-16 18:25:19 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-08-16 18:25:19 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-08-16 18:25:19 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-08-16 18:25:19 | INFO     | src.data_layer.loader | RUL computed — cap=125  RUL range=[0, 125]
+2026-08-16 18:25:19 | INFO     | src.data_layer.health_score | Health scores computed  rows=20631  tier_counts={'HEALTHY': 10631, 'WARNING': 3800, 'WATCH': 3700, 'CRITICAL': 2500}
+2026-08-16 18:26:03 | INFO     | src.evidence_layer.event_logger | EventLogger ready  collection=trace_fleet_events  model=all-MiniLM-L6-v2  existing_events=11700
+2026-08-16 18:26:23 | INFO     | src.evidence_layer.rag_retriever | RAGRetriever loaded embedding model  model=all-MiniLM-L6-v2
+2026-08-16 18:26:23 | INFO     | src.evidence_layer.rag_retriever | RAGRetriever ready  collection=trace_fleet_events  events=11700  top_k=5  relevance_threshold=0.50
+2026-08-16 18:26:23 | WARNING  | src.reasoning_layer.hypothesis_reasoner | google-generativeai not installed — Gemini disabled.
+2026-08-16 18:26:23 | INFO     | src.reasoning_layer.hypothesis_reasoner | HypothesisReasoner initialised  fleet_units=20631  timeline=yes  gemini_available=False  rag_retriever=yes
+2026-08-16 18:26:23 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Which vehicles will need maintenance in the next 30 cycles?'
+2026-08-16 18:26:23 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=threshold_query  confidence=0.85
+2026-08-16 18:26:23 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=threshold_query
+2026-08-16 18:26:23 | ERROR    | src.reasoning_layer.hypothesis_reasoner | analyze() failed: 'predicted_rul'
+Traceback (most recent call last):
+  File "C:\Users\SIDDHARTH\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7096, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'predicted_rul'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\SIDDHARTH\Documents\Trace\src\reasoning_layer\hypothesis_reasoner.py", line 243, in analyze
+    results = self._run_analysis(parsed)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\SIDDHARTH\Documents\Trace\src\reasoning_layer\hypothesis_reasoner.py", line 538, in _run_analysis
+    return handler(params)
+           ^^^^^^^^^^^^^^^
+  File "c:\Users\SIDDHARTH\Documents\Trace\src\reasoning_layer\hypothesis_reasoner.py", line 643, in _analyze_threshold_query
+    df[df["predicted_rul"] < threshold]
+       ~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\SIDDHARTH\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\core\frame.py", line 4113, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\SIDDHARTH\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\core\indexes\base.py", line 3819, in get_loc
+    raise KeyError(key) from err
+KeyError: 'predicted_rul'
+2026-08-16 18:26:23 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Show me the 5 most at-risk vehicles right now'
+2026-08-16 18:26:23 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=ranking_query  confidence=0.80
+2026-08-16 18:26:23 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=ranking_query
+2026-08-16 18:26:23 | ERROR    | src.reasoning_layer.hypothesis_reasoner | analyze() failed: 'predicted_health_score'
+Traceback (most recent call last):
+  File "c:\Users\SIDDHARTH\Documents\Trace\src\reasoning_layer\hypothesis_reasoner.py", line 243, in analyze
+    results = self._run_analysis(parsed)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\SIDDHARTH\Documents\Trace\src\reasoning_layer\hypothesis_reasoner.py", line 538, in _run_analysis
+    return handler(params)
+           ^^^^^^^^^^^^^^^
+  File "c:\Users\SIDDHARTH\Documents\Trace\src\reasoning_layer\hypothesis_reasoner.py", line 744, in _analyze_ranking_query
+    df = self._fleet_data.sort_values(
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\SIDDHARTH\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\core\frame.py", line 7211, in sort_values
+    k = self._get_label_or_level_values(by[0], axis=axis)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\SIDDHARTH\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\core\generic.py", line 1914, in _get_label_or_level_values
+    raise KeyError(key)
+KeyError: 'predicted_health_score'
+2026-08-16 18:26:23 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Are Group A vehicles degrading faster than Group B?'
+2026-08-16 18:26:23 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=fleet_comparison  confidence=0.78
+2026-08-16 18:26:23 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=fleet_comparison
+2026-08-16 18:26:32 | INFO     | src.reasoning_layer.hypothesis_reasoner | Fleet comparison  ga_rate=0.8000  gb_rate=0.8000  faster=Group A
+2026-08-16 18:26:32 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type=None
+2026-08-16 18:26:32 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:26:32 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Which vehicles show unusual health patterns?'
+2026-08-16 18:26:32 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=anomaly_hunt  confidence=0.75
+2026-08-16 18:26:32 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=anomaly_hunt
+2026-08-16 18:26:32 | INFO     | src.reasoning_layer.hypothesis_reasoner | Anomaly hunt  fleet_mean_var=1080.178  fleet_std_var=60.138  anomalous=0
+2026-08-16 18:26:32 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type=None
+2026-08-16 18:26:32 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:26:32 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Is fleet health improving or declining over the last 50 cycles?'
+2026-08-16 18:26:32 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=threshold_query  confidence=0.85
+2026-08-16 18:26:32 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=threshold_query
+2026-08-16 18:26:32 | ERROR    | src.reasoning_layer.hypothesis_reasoner | analyze() failed: 'predicted_rul'
+Traceback (most recent call last):
+  File "C:\Users\SIDDHARTH\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7096, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'predicted_rul'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\SIDDHARTH\Documents\Trace\src\reasoning_layer\hypothesis_reasoner.py", line 243, in analyze
+    results = self._run_analysis(parsed)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\SIDDHARTH\Documents\Trace\src\reasoning_layer\hypothesis_reasoner.py", line 538, in _run_analysis
+    return handler(params)
+           ^^^^^^^^^^^^^^^
+  File "c:\Users\SIDDHARTH\Documents\Trace\src\reasoning_layer\hypothesis_reasoner.py", line 643, in _analyze_threshold_query
+    df[df["predicted_rul"] < threshold]
+       ~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\SIDDHARTH\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\core\frame.py", line 4113, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\SIDDHARTH\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\core\indexes\base.py", line 3819, in get_loc
+    raise KeyError(key) from err
+KeyError: 'predicted_rul'
+2026-08-16 18:35:53 | INFO     | src.utils.config_loader | Config loaded from 'C:\Users\SIDDHARTH\Documents\Trace\config\config.yaml'
+2026-08-16 18:35:55 | INFO     | src.data_layer.loader | === TRACE Data Pipeline START ===
+2026-08-16 18:35:55 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-08-16 18:35:55 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-08-16 18:35:55 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-08-16 18:35:55 | INFO     | src.data_layer.loader | RUL computed — cap=125  RUL range=[0, 125]
+2026-08-16 18:35:55 | INFO     | src.data_layer.loader | Dropped sensors ['s1', 's5', 's6', 's10', 's16', 's18', 's19']  remaining columns=20
+2026-08-16 18:35:55 | INFO     | src.data_layer.loader | Dropped sensors ['s1', 's5', 's6', 's10', 's16', 's18', 's19']  remaining columns=20
+2026-08-16 18:35:56 | INFO     | src.data_layer.loader | Feature names (17): ['op_setting_1', 'op_setting_2', 'op_setting_3', 's2', 's3', 's4', 's7', 's8', 's9', 's11', 's12', 's13', 's14', 's15', 's17', 's20', 's21']
+2026-08-16 18:35:56 | INFO     | src.data_layer.loader | Sequences built  X.shape=(17731, 30, 17)  y.shape=(17731,)  window_size=30
+2026-08-16 18:35:56 | INFO     | src.data_layer.loader | Sequences built  X.shape=(10196, 30, 17)  y.shape=(10196,)  window_size=30
+2026-08-16 18:35:56 | INFO     | src.data_layer.loader | Scaler saved to 'models/scaler.pkl'
+2026-08-16 18:35:56 | INFO     | src.data_layer.loader | === TRACE Data Pipeline COMPLETE ===
+2026-08-16 18:35:56 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-08-16 18:35:56 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-08-16 18:35:56 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-08-16 18:35:56 | INFO     | src.data_layer.loader | RUL computed — cap=125  RUL range=[0, 125]
+2026-08-16 18:35:56 | INFO     | src.data_layer.health_score | Health scores computed  rows=20631  tier_counts={'HEALTHY': 10631, 'WARNING': 3800, 'WATCH': 3700, 'CRITICAL': 2500}
+2026-08-16 18:35:56 | INFO     | src.data_layer.health_score | Fleet snapshot ready  units=100  critical=0  warning=27  watch=32  healthy=41
+2026-08-16 18:35:59 | INFO     | src.ml_layer.lstm_predictor | Trainer initialised  device=cpu
+2026-08-16 18:35:59 | INFO     | src.ml_layer.lstm_predictor | LSTMPredictor built  n_features=17  h1=64  h2=32  dense_units=16  dropout=0.20
+2026-08-16 18:36:00 | INFO     | src.ml_layer.lstm_predictor | Model loaded from 'models/lstm_model.pth'  (eval mode)
+2026-08-16 18:36:00 | INFO     | src.ml_layer.lstm_predictor | Predictor ready  rul_cap=125
+2026-08-16 18:36:00 | INFO     | src.ml_layer.lstm_predictor | Trainer initialised  device=cpu
+2026-08-16 18:36:00 | INFO     | src.ml_layer.lstm_predictor | LSTMPredictor built  n_features=17  h1=64  h2=32  dense_units=16  dropout=0.20
+2026-08-16 18:36:00 | INFO     | src.ml_layer.lstm_predictor | Model loaded from 'models/lstm_model.pth'  (eval mode)
+2026-08-16 18:36:00 | INFO     | src.ml_layer.lstm_predictor | Predictor ready  rul_cap=125
+2026-08-16 18:36:01 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-08-16 18:36:01 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-08-16 18:36:01 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-08-16 18:36:01 | INFO     | src.data_layer.loader | Dropped sensors ['s1', 's5', 's6', 's10', 's16', 's18', 's19']  remaining columns=20
+2026-08-16 18:36:01 | INFO     | src.ml_layer.lstm_predictor | Sequences built  X.shape=(10196, 30, 17)  y.shape=(10196,)  window_size=30  units=100
+2026-08-16 18:36:04 | INFO     | src.ml_layer.lstm_predictor | Fleet predictions complete  units=100  mean_rul=76.5  mean_health=61.2
+2026-08-16 18:36:28 | INFO     | src.evidence_layer.event_logger | EventLogger ready  collection=trace_fleet_events  model=all-MiniLM-L6-v2  existing_events=11700
+2026-08-16 18:36:28 | INFO     | src.evidence_layer.event_logger | Loaded existing 11700 events from ChromaDB — skipping re-index
+2026-08-16 18:36:30 | INFO     | src.evidence_layer.rag_retriever | RAGRetriever ready  collection=trace_fleet_events  events=11700  top_k=5  relevance_threshold=0.50
+2026-08-16 18:36:30 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type={'unit_id': {'$eq': 1}}
+2026-08-16 18:36:30 | WARNING  | src.reasoning_layer.hypothesis_reasoner | google-generativeai not installed — Gemini disabled.
+2026-08-16 18:36:30 | INFO     | src.reasoning_layer.hypothesis_reasoner | HypothesisReasoner initialised  fleet_units=100  timeline=yes  gemini_available=False  rag_retriever=yes
+2026-08-16 18:36:30 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Which vehicles will need maintenance in the next 30 cycles?'
+2026-08-16 18:36:30 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=threshold_query  confidence=0.85
+2026-08-16 18:36:30 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=threshold_query
+2026-08-16 18:36:30 | INFO     | src.reasoning_layer.hypothesis_reasoner | Threshold query  threshold=30  count=21  most_critical=Engine 34
+2026-08-16 18:36:30 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type={'unit_id': {'$in': [34, 76, 68, 81, 31, 82, 35, 42, 20, 49, 66, 56, 100, 61, 24, 64, 92, 36, 90, 91, 77]}}
+2026-08-16 18:36:30 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:36:30 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Show me the 5 most at-risk vehicles right now'
+2026-08-16 18:36:30 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=ranking_query  confidence=0.80
+2026-08-16 18:36:30 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=ranking_query
+2026-08-16 18:36:30 | INFO     | src.reasoning_layer.hypothesis_reasoner | Ranking query  top_n=5  worst={'unit_id': 'Engine 34', 'health_score': 4.1, 'risk_tier': 'CRITICAL', 'predicted_rul': 5.1}
+2026-08-16 18:36:30 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type={'unit_id': {'$in': [34, 76, 68, 81, 31]}}
+2026-08-16 18:36:30 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:36:30 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Are Group A vehicles degrading faster than Group B?'
+2026-08-16 18:36:30 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=fleet_comparison  confidence=0.78
+2026-08-16 18:36:30 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=fleet_comparison
+2026-08-16 18:36:30 | INFO     | src.reasoning_layer.hypothesis_reasoner | Fleet comparison  ga_rate=0.8000  gb_rate=0.8000  faster=Group B
+2026-08-16 18:36:30 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type=None
+2026-08-16 18:36:30 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:36:30 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Which vehicles show unusual health patterns?'
+2026-08-16 18:36:30 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=anomaly_hunt  confidence=0.75
+2026-08-16 18:36:30 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=anomaly_hunt
+2026-08-16 18:36:30 | INFO     | src.reasoning_layer.hypothesis_reasoner | Anomaly hunt  fleet_mean_var=1080.178  fleet_std_var=60.138  anomalous=0
+2026-08-16 18:36:30 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type=None
+2026-08-16 18:36:30 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:36:30 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Is fleet health improving or declining over the last 50 cycles?'
+2026-08-16 18:36:30 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=trend_analysis  confidence=0.80
+2026-08-16 18:36:30 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=trend_analysis
+2026-08-16 18:36:30 | INFO     | src.reasoning_layer.hypothesis_reasoner | Trend analysis  slope=-0.41482  direction=declining  window=49
+2026-08-16 18:36:30 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type=None
+2026-08-16 18:36:30 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:36:30 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Which vehicles will need maintenance in the next 30 cycles?'
+2026-08-16 18:36:30 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=threshold_query  confidence=0.85
+2026-08-16 18:36:30 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=threshold_query
+2026-08-16 18:36:30 | INFO     | src.reasoning_layer.hypothesis_reasoner | Threshold query  threshold=30  count=21  most_critical=Engine 34
+2026-08-16 18:36:30 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type={'unit_id': {'$in': [34, 76, 68, 81, 31, 82, 35, 42, 20, 49, 66, 56, 100, 61, 24, 64, 92, 36, 90, 91, 77]}}
+2026-08-16 18:36:30 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:36:30 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Show me the 5 most at-risk vehicles right now'
+2026-08-16 18:36:30 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=ranking_query  confidence=0.80
+2026-08-16 18:36:30 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=ranking_query
+2026-08-16 18:36:30 | INFO     | src.reasoning_layer.hypothesis_reasoner | Ranking query  top_n=5  worst={'unit_id': 'Engine 34', 'health_score': 4.1, 'risk_tier': 'CRITICAL', 'predicted_rul': 5.1}
+2026-08-16 18:36:30 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type={'unit_id': {'$in': [34, 76, 68, 81, 31]}}
+2026-08-16 18:36:30 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:36:30 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Are Group A vehicles degrading faster than Group B?'
+2026-08-16 18:36:30 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=fleet_comparison  confidence=0.78
+2026-08-16 18:36:30 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=fleet_comparison
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Fleet comparison  ga_rate=0.8000  gb_rate=0.8000  faster=Group B
+2026-08-16 18:36:31 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type=None
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Which vehicles show unusual health patterns?'
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=anomaly_hunt  confidence=0.75
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=anomaly_hunt
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Anomaly hunt  fleet_mean_var=1080.178  fleet_std_var=60.138  anomalous=0
+2026-08-16 18:36:31 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type=None
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Is fleet health improving or declining over the last 50 cycles?'
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=trend_analysis  confidence=0.80
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=trend_analysis
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Trend analysis  slope=-0.41482  direction=declining  window=49
+2026-08-16 18:36:31 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type=None
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Which vehicles will need maintenance in the next 30 cycles?'
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=threshold_query  confidence=0.85
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=threshold_query
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Threshold query  threshold=30  count=21  most_critical=Engine 34
+2026-08-16 18:36:31 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type={'unit_id': {'$in': [34, 76, 68, 81, 31, 82, 35, 42, 20, 49, 66, 56, 100, 61, 24, 64, 92, 36, 90, 91, 77]}}
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Show me the 5 most at-risk vehicles right now'
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=ranking_query  confidence=0.80
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=ranking_query
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Ranking query  top_n=5  worst={'unit_id': 'Engine 34', 'health_score': 4.1, 'risk_tier': 'CRITICAL', 'predicted_rul': 5.1}
+2026-08-16 18:36:31 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type={'unit_id': {'$in': [34, 76, 68, 81, 31]}}
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Are Group A vehicles degrading faster than Group B?'
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=fleet_comparison  confidence=0.78
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=fleet_comparison
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Fleet comparison  ga_rate=0.8000  gb_rate=0.8000  faster=Group B
+2026-08-16 18:36:31 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type=None
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Which vehicles show unusual health patterns?'
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=anomaly_hunt  confidence=0.75
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=anomaly_hunt
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Anomaly hunt  fleet_mean_var=1080.178  fleet_std_var=60.138  anomalous=0
+2026-08-16 18:36:31 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type=None
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Is fleet health improving or declining over the last 50 cycles?'
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=trend_analysis  confidence=0.80
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=trend_analysis
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Trend analysis  slope=-0.41482  direction=declining  window=49
+2026-08-16 18:36:31 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type=None
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Which vehicles will need maintenance in the next 30 cycles?'
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=threshold_query  confidence=0.85
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=threshold_query
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Threshold query  threshold=30  count=21  most_critical=Engine 34
+2026-08-16 18:36:31 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type={'unit_id': {'$in': [34, 76, 68, 81, 31, 82, 35, 42, 20, 49, 66, 56, 100, 61, 24, 64, 92, 36, 90, 91, 77]}}
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Show me the 5 most at-risk vehicles right now'
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=ranking_query  confidence=0.80
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=ranking_query
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Ranking query  top_n=5  worst={'unit_id': 'Engine 34', 'health_score': 4.1, 'risk_tier': 'CRITICAL', 'predicted_rul': 5.1}
+2026-08-16 18:36:31 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type={'unit_id': {'$in': [34, 76, 68, 81, 31]}}
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Are Group A vehicles degrading faster than Group B?'
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=fleet_comparison  confidence=0.78
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=fleet_comparison
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Fleet comparison  ga_rate=0.8000  gb_rate=0.8000  faster=Group B
+2026-08-16 18:36:31 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type=None
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Which vehicles show unusual health patterns?'
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=anomaly_hunt  confidence=0.75
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=anomaly_hunt
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Anomaly hunt  fleet_mean_var=1080.178  fleet_std_var=60.138  anomalous=0
+2026-08-16 18:36:31 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type=None
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Is fleet health improving or declining over the last 50 cycles?'
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=trend_analysis  confidence=0.80
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=trend_analysis
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Trend analysis  slope=-0.41482  direction=declining  window=49
+2026-08-16 18:36:31 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type=None
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Which vehicles will need maintenance in the next 30 cycles?'
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=threshold_query  confidence=0.85
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=threshold_query
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Threshold query  threshold=30  count=21  most_critical=Engine 34
+2026-08-16 18:36:31 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type={'unit_id': {'$in': [34, 76, 68, 81, 31, 82, 35, 42, 20, 49, 66, 56, 100, 61, 24, 64, 92, 36, 90, 91, 77]}}
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Show me the 5 most at-risk vehicles right now'
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=ranking_query  confidence=0.80
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=ranking_query
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Ranking query  top_n=5  worst={'unit_id': 'Engine 34', 'health_score': 4.1, 'risk_tier': 'CRITICAL', 'predicted_rul': 5.1}
+2026-08-16 18:36:31 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type={'unit_id': {'$in': [34, 76, 68, 81, 31]}}
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Are Group A vehicles degrading faster than Group B?'
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=fleet_comparison  confidence=0.78
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=fleet_comparison
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Fleet comparison  ga_rate=0.8000  gb_rate=0.8000  faster=Group B
+2026-08-16 18:36:31 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type=None
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Which vehicles show unusual health patterns?'
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=anomaly_hunt  confidence=0.75
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=anomaly_hunt
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Anomaly hunt  fleet_mean_var=1080.178  fleet_std_var=60.138  anomalous=0
+2026-08-16 18:36:31 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type=None
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Is fleet health improving or declining over the last 50 cycles?'
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=trend_analysis  confidence=0.80
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=trend_analysis
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Trend analysis  slope=-0.41482  direction=declining  window=49
+2026-08-16 18:36:31 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type=None
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='xyzzy frobble wibble 42 blorp'
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=unknown  confidence=0.30
+2026-08-16 18:36:31 | WARNING  | src.reasoning_layer.hypothesis_reasoner | No analysis handler for query_type='unknown'
+2026-08-16 18:36:31 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type=None
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Which vehicles will need maintenance in the next 125 cycles?'
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=threshold_query  confidence=0.85
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=threshold_query
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Threshold query  threshold=125  count=100  most_critical=Engine 34
+2026-08-16 18:36:31 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type={'unit_id': {'$in': [34, 76, 68, 81, 31, 82, 35, 42, 20, 49, 66, 56, 100, 61, 24, 64, 92, 36, 90, 91, 77, 41, 40, 53, 52, 37, 18, 46, 58, 62, 93, 38, 3, 32, 17, 72, 94, 43, 21, 98, 84, 97, 45, 13, 4, 10, 63, 19, 70, 50, 27, 16, 11, 8, 44, 75, 12, 7, 79, 29, 80, 95, 5, 15, 71, 48, 96, 73, 25, 57, 51, 74, 26, 30, 28, 59, 55, 33, 1, 6, 60, 47, 89, 14, 67, 88, 69, 99, 86, 54, 87, 23, 9, 22, 83, 2, 65, 39, 85, 78]}}
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Show me the 5 most at-risk vehicles right now'
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=ranking_query  confidence=0.80
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=ranking_query
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Ranking query  top_n=5  worst={'unit_id': 'Engine 34', 'health_score': 4.1, 'risk_tier': 'CRITICAL', 'predicted_rul': 5.1}
+2026-08-16 18:36:31 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type={'unit_id': {'$in': [34, 76, 68, 81, 31]}}
+2026-08-16 18:36:31 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
+2026-08-16 18:37:57 | INFO     | src.utils.config_loader | Config loaded from 'C:\Users\SIDDHARTH\Documents\Trace\config\config.yaml'
+2026-08-16 18:37:59 | INFO     | src.data_layer.loader | === TRACE Data Pipeline START ===
+2026-08-16 18:37:59 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-08-16 18:38:00 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-08-16 18:38:00 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-08-16 18:38:00 | INFO     | src.data_layer.loader | RUL computed — cap=125  RUL range=[0, 125]
+2026-08-16 18:38:00 | INFO     | src.data_layer.loader | Dropped sensors ['s1', 's5', 's6', 's10', 's16', 's18', 's19']  remaining columns=20
+2026-08-16 18:38:00 | INFO     | src.data_layer.loader | Dropped sensors ['s1', 's5', 's6', 's10', 's16', 's18', 's19']  remaining columns=20
+2026-08-16 18:38:00 | INFO     | src.data_layer.loader | Feature names (17): ['op_setting_1', 'op_setting_2', 'op_setting_3', 's2', 's3', 's4', 's7', 's8', 's9', 's11', 's12', 's13', 's14', 's15', 's17', 's20', 's21']
+2026-08-16 18:38:00 | INFO     | src.data_layer.loader | Sequences built  X.shape=(17731, 30, 17)  y.shape=(17731,)  window_size=30
+2026-08-16 18:38:00 | INFO     | src.data_layer.loader | Sequences built  X.shape=(10196, 30, 17)  y.shape=(10196,)  window_size=30
+2026-08-16 18:38:00 | INFO     | src.data_layer.loader | Scaler saved to 'models/scaler.pkl'
+2026-08-16 18:38:00 | INFO     | src.data_layer.loader | === TRACE Data Pipeline COMPLETE ===
+2026-08-16 18:38:01 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-08-16 18:38:01 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-08-16 18:38:01 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-08-16 18:38:01 | INFO     | src.data_layer.loader | RUL computed — cap=125  RUL range=[0, 125]
+2026-08-16 18:38:01 | INFO     | src.data_layer.health_score | Health scores computed  rows=20631  tier_counts={'HEALTHY': 10631, 'WARNING': 3800, 'WATCH': 3700, 'CRITICAL': 2500}
+2026-08-16 18:38:01 | INFO     | src.data_layer.health_score | Fleet snapshot ready  units=100  critical=0  warning=27  watch=32  healthy=41
+2026-08-16 18:38:03 | INFO     | src.ml_layer.lstm_predictor | Trainer initialised  device=cpu
+2026-08-16 18:38:03 | INFO     | src.ml_layer.lstm_predictor | LSTMPredictor built  n_features=17  h1=64  h2=32  dense_units=16  dropout=0.20
+2026-08-16 18:38:05 | INFO     | src.ml_layer.lstm_predictor | Model loaded from 'models/lstm_model.pth'  (eval mode)
+2026-08-16 18:38:05 | INFO     | src.ml_layer.lstm_predictor | Predictor ready  rul_cap=125
+2026-08-16 18:38:05 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-08-16 18:38:05 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-08-16 18:38:05 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-08-16 18:38:05 | INFO     | src.data_layer.loader | Dropped sensors ['s1', 's5', 's6', 's10', 's16', 's18', 's19']  remaining columns=20
+2026-08-16 18:38:05 | INFO     | src.ml_layer.lstm_predictor | Sequences built  X.shape=(10196, 30, 17)  y.shape=(10196,)  window_size=30  units=100
+2026-08-16 18:38:08 | INFO     | src.ml_layer.lstm_predictor | Fleet predictions complete  units=100  mean_rul=76.5  mean_health=61.2
+2026-08-16 18:38:29 | INFO     | src.evidence_layer.event_logger | EventLogger ready  collection=trace_fleet_events  model=all-MiniLM-L6-v2  existing_events=11700
+2026-08-16 18:38:29 | INFO     | src.evidence_layer.event_logger | Loaded existing 11700 events from ChromaDB — skipping re-index
+2026-08-16 18:38:29 | INFO     | src.evidence_layer.rag_retriever | RAGRetriever ready  collection=trace_fleet_events  events=11700  top_k=5  relevance_threshold=0.50
+2026-08-16 18:38:29 | WARNING  | src.reasoning_layer.hypothesis_reasoner | google-generativeai not installed — Gemini disabled.
+2026-08-16 18:38:29 | INFO     | src.reasoning_layer.hypothesis_reasoner | HypothesisReasoner initialised  fleet_units=100  timeline=yes  gemini_available=False  rag_retriever=yes
+2026-08-16 18:38:30 | INFO     | src.evidence_layer.rag_retriever | Retrieved 8 events (above threshold=0.50)  query_type={'unit_id': {'$eq': 12}}
+2026-08-16 18:38:41 | INFO     | src.data_layer.loader | === TRACE Data Pipeline START ===
+2026-08-16 18:38:42 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-08-16 18:38:42 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-08-16 18:38:42 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-08-16 18:38:42 | INFO     | src.data_layer.loader | RUL computed — cap=125  RUL range=[0, 125]
+2026-08-16 18:38:42 | INFO     | src.data_layer.loader | Dropped sensors ['s1', 's5', 's6', 's10', 's16', 's18', 's19']  remaining columns=20
+2026-08-16 18:38:42 | INFO     | src.data_layer.loader | Dropped sensors ['s1', 's5', 's6', 's10', 's16', 's18', 's19']  remaining columns=20
+2026-08-16 18:38:42 | INFO     | src.data_layer.loader | Feature names (17): ['op_setting_1', 'op_setting_2', 'op_setting_3', 's2', 's3', 's4', 's7', 's8', 's9', 's11', 's12', 's13', 's14', 's15', 's17', 's20', 's21']
+2026-08-16 18:38:42 | INFO     | src.data_layer.loader | Sequences built  X.shape=(17731, 30, 17)  y.shape=(17731,)  window_size=30
+2026-08-16 18:38:42 | INFO     | src.data_layer.loader | Sequences built  X.shape=(10196, 30, 17)  y.shape=(10196,)  window_size=30
+2026-08-16 18:38:42 | INFO     | src.data_layer.loader | Scaler saved to 'models/scaler.pkl'
+2026-08-16 18:38:42 | INFO     | src.data_layer.loader | === TRACE Data Pipeline COMPLETE ===
+2026-08-16 18:38:43 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-08-16 18:38:43 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-08-16 18:38:43 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-08-16 18:38:43 | INFO     | src.data_layer.loader | RUL computed — cap=125  RUL range=[0, 125]
+2026-08-16 18:38:43 | INFO     | src.data_layer.health_score | Health scores computed  rows=20631  tier_counts={'HEALTHY': 10631, 'WARNING': 3800, 'WATCH': 3700, 'CRITICAL': 2500}
+2026-08-16 18:38:43 | INFO     | src.data_layer.health_score | Fleet snapshot ready  units=100  critical=0  warning=27  watch=32  healthy=41
+2026-08-16 18:38:43 | INFO     | src.data_layer.loader | Loaded 'train_FD001.txt'  shape=(20631, 26)
+2026-08-16 18:38:44 | INFO     | src.data_layer.loader | Loaded 'test_FD001.txt'  shape=(13096, 26)
+2026-08-16 18:38:44 | INFO     | src.data_layer.loader | Loaded 'RUL_FD001.txt'  shape=(100, 1)
+2026-08-16 18:38:44 | INFO     | src.data_layer.loader | Dropped sensors ['s1', 's5', 's6', 's10', 's16', 's18', 's19']  remaining columns=20
+2026-08-16 18:38:44 | INFO     | src.ml_layer.lstm_predictor | Sequences built  X.shape=(10196, 30, 17)  y.shape=(10196,)  window_size=30  units=100
+2026-08-16 18:38:47 | INFO     | src.ml_layer.lstm_predictor | Fleet predictions complete  units=100  mean_rul=76.5  mean_health=61.2
+2026-08-16 18:38:48 | INFO     | src.evidence_layer.rag_retriever | Retrieved 8 events (above threshold=0.50)  query_type={'unit_id': {'$eq': 12}}
+2026-08-16 18:38:55 | INFO     | src.evidence_layer.rag_retriever | Retrieved 8 events (above threshold=0.50)  query_type={'unit_id': {'$eq': 12}}
+2026-08-16 18:38:58 | INFO     | src.evidence_layer.rag_retriever | Retrieved 8 events (above threshold=0.50)  query_type={'unit_id': {'$eq': 12}}
+2026-08-16 18:38:58 | INFO     | src.reasoning_layer.hypothesis_reasoner | analyze() called  question='Which vehicles will need maintenance in the next 30 cycles?'
+2026-08-16 18:38:58 | INFO     | src.reasoning_layer.hypothesis_reasoner | Rule-based parser  query_type=threshold_query  confidence=0.85
+2026-08-16 18:38:58 | INFO     | src.reasoning_layer.hypothesis_reasoner | Running analysis  query_type=threshold_query
+2026-08-16 18:38:58 | INFO     | src.reasoning_layer.hypothesis_reasoner | Threshold query  threshold=30  count=21  most_critical=Engine 34
+2026-08-16 18:38:58 | INFO     | src.evidence_layer.rag_retriever | Retrieved 5 events (above threshold=0.50)  query_type={'unit_id': {'$in': [34, 76, 68, 81, 31, 82, 35, 42, 20, 49, 66, 56, 100, 61, 24, 64, 92, 36, 90, 91, 77]}}
+2026-08-16 18:38:58 | INFO     | src.reasoning_layer.hypothesis_reasoner | Evidence retrieved  n_events=5
