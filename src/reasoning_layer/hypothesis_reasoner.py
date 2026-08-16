@@ -406,7 +406,6 @@ class HypothesisReasoner:
             "next ",     # "next 30 cycles/days"
             "within",
             "days",      # "in the next 30 days"
-            "cycle",     # cycles / cycle
             "fix",
             "inspect",   # inspection, inspect
             "pm",        # preventive maintenance abbreviation
