@@ -182,24 +182,3 @@ streamlit run app.py
 | Module 4 -- Evidence Layer | Complete |
 | Module 5 -- Dashboard and Polish | Complete |
 
----
-
-## Running Tests
-
-```bash
-pytest tests/ -v
-```
-
-Integration test covers: full pipeline, predictor loading, ChromaDB population,
-all 5 query types returning complete verdicts, evidence event retrieval, and
-graceful unknown-query handling.
-
----
-
-## Author
-
-**Siddharth**
-[GitHub](https://github.com/Siddharth-G06)
-
-Built as a demonstration of hypothesis-driven fleet intelligence --
-the investigative alternative to threshold-based monitoring.
